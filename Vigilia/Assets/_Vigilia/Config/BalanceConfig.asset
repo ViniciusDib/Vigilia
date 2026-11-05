@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b21df00224988e49bddb7002669f062, type: 3}
+  m_Name: BalanceConfig
+  m_EditorClassIdentifier: Vigilia::Vigilia.BalanceConfig
+  maxPossessao: 100
+  taxaBase: 0.1
+  multFria: 2
+  multMorna: 1
+  multQuente: 0.5
+  multLucido: 0.5
+  duracaoLucido: 60
+  pulsoToque: 25
+  pulsoBarulho: 10
+  fatorSono: 0.4
+  tempoRecuoToque: 2.5
+  raioDeteccao: 6
+  raioPerseguicao: 8
+  velocidadePatrulha: 1.5
+  velocidadePerseguicao: 2.2
+  multVelocidadeNoite:
+  - 0.8
+  - 1
+  - 1.2
+  multVelocidadePacienteVelho: 1.25
+  multRaioBarulhoPacienteVelho: 1.5
+  distanciaToque: 0.6
+  tempoAtordoado: 8
+  alcanceLanterna: 8
+  meiaAberturaGraus: 28
+  consumoBateria: 0.4
+  recargaPilha: 40
+  bateriaFraca: 15
+  inimigosPorNoite: 020000000600000008000000i
+  esconderijosPorNoite: 050000000400000003000000i
+  pilhasPorNoite: 040000000300000002000000i
+  salasQuentesPorNoite: 020000000200000001000000i
+  velocidadeJogador: 3.2
+  velocidadeEscondidoSaida: 1.2
+  tempoTocado: 0.6
+  tempoEscrita: 2
+  tempoAbrirComChave: 4
+  raioBarulhoPeDeCabra: 14
+  alcanceInteracao: 1.3
+  tempoMaxEscondido: 12
+  alcanceAtaque: 1.8
+  noite3CaldeiraFalha: 0
+  tempoReligarCaldeira: 3
+  faixasMateria:
+    verdadeV1: 1
+    verdadeV2: 3
+    exposicaoE1: 1
+    exposicaoE2: 4
+  p02TransbordoNoite3VaiAoFinalC: 1
+  p03PeDeCabraFazBarulho: 1
+  p04PossessaoNaoSobeDeDia: 1
+  p05DormirExigeQuartoQuente: 1
+  p05DormirExigePortaAberta: 1
+  p06InimigosNaoEntramNoQuarto: 1
+  p07EvidenciaSoContaAnotada: 1
+  mostrarBarraPossessao: 0
+  p13SalvarCheckpoint: 1
+  encontroAoTransbordar: 0
+  encontroNaSalaSecreta: 1
+  duracaoEncontro: 5.5
+  noite3Fuga: 1
+  fugaInimigosExtras: 4
+  fugaMultVelocidade: 1.1
+  fugaMultRaio: 1.5
+  fugaMultPossessao: 1.2
+  fugaDistanciaMinimaExtras: 12
+  corLuzFuga: {r: 0.9, g: 0.15, b: 0.12, a: 1}
+  volumeMusica: 0.85
+  intensidadeLuzGlobalDia: 0.65
+  intensidadeLuzGlobalNoite: 0.035
+  corLuzGlobalDia: {r: 0.78, g: 0.86, b: 1, a: 1}
+  corLuzGlobalNoite: {r: 0.35, g: 0.45, b: 0.8, a: 1}
+  intensidadeLanterna: 1.25
+  corLanterna: {r: 1, g: 0.93, b: 0.78, a: 1}
+  tremorLanternaMax: 6
