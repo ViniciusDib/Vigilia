@@ -93,7 +93,7 @@ namespace Vigilia
                     {
                         SairDoEsconderijo();
                         achou.Encontrar();
-                        J.ui.Mensagem("Encontraram você!");
+                        J.ui.Mensagem(Idioma.T("Encontraram você!", "They found you!"));
                         MudarEstado(EstadoJogador.Perseguido);
                     }
                     break;
@@ -106,7 +106,7 @@ namespace Vigilia
                     break;
                 case EstadoJogador.Escrevendo:
                     timer -= Time.deltaTime;
-                    J.ui.Progresso(1f - timer / Mathf.Max(0.01f, Cfg.tempoEscrita), "escrevendo...");
+                    J.ui.Progresso(1f - timer / Mathf.Max(0.01f, Cfg.tempoEscrita), Idioma.T("escrevendo...", "writing..."));
                     if (timer <= 0f)
                     {
                         J.ui.Progresso(-1f, null);
@@ -299,23 +299,24 @@ namespace Vigilia
 
             if (kb.qKey.wasPressedThisFrame)
             {
-                if (w.sedativos <= 0) { J.ui.Mensagem("Sem sedativos."); return; }
+                if (w.sedativos <= 0) { J.ui.Mensagem(Idioma.T("Sem sedativos.", "No sedatives.")); return; }
                 var alvo = EnemyAI.AlvoDeAtaque(Posicao, Direcao, Cfg.alcanceAtaque, EstadoInimigo.Congelado);
-                if (alvo == null) { J.ui.Mensagem("O sedativo só funciona num possuído parado na luz, bem perto."); return; }
+                if (alvo == null) { J.ui.Mensagem(Idioma.T("O sedativo só funciona num possuído parado na luz, bem perto.", "The sedative only works on a possessed one frozen in the light, up close.")); return; }
                 w.sedativos--;
                 alvo.Atordoar();
-                J.ui.Mensagem($"{alvo.nome} cambaleia e para.");
+                J.ui.Mensagem(Idioma.T($"{alvo.Nome} cambaleia e para.", $"{alvo.Nome} staggers and stops."));
             }
 
             if (kb.rKey.wasPressedThisFrame)
             {
-                if (w.objetosPesados <= 0) { J.ui.Mensagem("Você não tem nada pesado nas mãos."); return; }
+                if (w.objetosPesados <= 0) { J.ui.Mensagem(Idioma.T("Você não tem nada pesado nas mãos.", "You have nothing heavy in your hands.")); return; }
                 var alvo = EnemyAI.AlvoDeAtaque(Posicao, Direcao, Cfg.alcanceAtaque, EstadoInimigo.Atordoado);
-                if (alvo == null) { J.ui.Mensagem("Só dá para golpear um possuído atordoado, bem perto."); return; }
+                if (alvo == null) { J.ui.Mensagem(Idioma.T("Só dá para golpear um possuído atordoado, bem perto.", "You can only strike a stunned possessed one, up close.")); return; }
                 if (Time.time > confirmarGolpeAte)
                 {
                     confirmarGolpeAte = Time.time + 2.5f;
-                    J.ui.Mensagem($"É {alvo.nome}. De dia, é uma pessoa. [R] de novo para golpear. Não tem volta.");
+                    J.ui.Mensagem(Idioma.T($"É {alvo.Nome}. De dia, é uma pessoa. [R] de novo para golpear. Não tem volta.",
+                                           $"It's {alvo.Nome}. By day, a person. [R] again to strike. There's no going back."));
                     return;
                 }
                 confirmarGolpeAte = 0f;

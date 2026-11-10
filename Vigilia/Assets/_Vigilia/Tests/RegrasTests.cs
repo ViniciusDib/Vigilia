@@ -84,6 +84,35 @@ namespace Vigilia.Tests
             Assert.AreEqual("V2", r.blocos.Find(x => x.id.StartsWith("V")).id);
         }
 
+        // ---------------- Idioma (decisão de 09/11: toggle português/inglês)
+
+        [Test]
+        public void Traducao_TodoBlocoDaMateriaTemIngles()
+        {
+            var en = new HashSet<string>(MateriaTextos.TodosOsIdsEN);
+            foreach (var id in MateriaTextos.TodosOsIds) Assert.IsTrue(en.Contains(id), $"bloco {id} sem versão em inglês");
+        }
+
+        [Test]
+        public void Traducao_FinalEmInglesNaoMisturaPortugues()
+        {
+            var antes = Idioma.Atual;
+            try
+            {
+                Idioma.Atual = Lingua.EN;
+                var w = new WorldState { matouAlguem = true, arrombouPorta = true, vezesTocado = 5 };
+                foreach (bool transbordou in new[] { false, true })
+                {
+                    var r = EndingResolver.ResolverCompleto(w, transbordou, new FaixasMateria(), true);
+                    foreach (var b in r.blocos)
+                        Assert.IsFalse(b.texto.Contains(" não ") || b.texto.Contains("ção"), $"bloco {b.id} em português: {b.texto}");
+                }
+                Assert.AreEqual("Corridor", Idioma.Cena("Corredor"));
+                Assert.AreEqual("Marta Quill", Idioma.Cena("Marta Quill"), "nome próprio sem tradução fica igual");
+            }
+            finally { Idioma.Atual = antes; }
+        }
+
         // ---------------- Banheira (GDD 6.4)
 
         [Test]

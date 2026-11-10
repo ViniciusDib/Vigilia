@@ -26,7 +26,8 @@ namespace Vigilia
 
         public override bool Disponivel(PlayerController p) => base.Disponivel(p) && utilizavel && J.EhNoite;
 
-        public override string Prompt(PlayerController p) => Ocupado ? "[E] Sair" : $"[E] Esconder-se ({nome})";
+        public override string Prompt(PlayerController p)
+            => Ocupado ? Idioma.T("[E] Sair", "[E] Come out") : Idioma.T("[E] Esconder-se", "[E] Hide") + $" ({Idioma.Cena(nome)})";
 
         public override void Interagir(PlayerController p)
         {

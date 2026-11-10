@@ -28,6 +28,8 @@ namespace Vigilia
         public bool soNaFuga;
         [Tooltip("Frase sussurrada a primeira vez que persegue à noite (ex.: Marta chama 'Elias...', pista 1).")]
         public string sussurro;
+        /// <summary>Nome no idioma atual (tabela TextosCenaEN; nomes próprios ficam iguais).</summary>
+        public string Nome => Idioma.Cena(nome);
         [Tooltip("Noite em que o sussurro acontece (0 = todas).")]
         public int noiteDoSussurro = 1;
 
@@ -286,7 +288,7 @@ namespace Vigilia
             if (sussurrou || string.IsNullOrEmpty(sussurro)) return;
             if (noiteDoSussurro != 0 && noiteDoSussurro != noite) return;
             sussurrou = true;
-            J.ui.Legenda($"{nome}: \"{sussurro}\"", 3f);
+            J.ui.Legenda($"{Nome}: \"{Idioma.Cena(sussurro)}\"", 3f);
             J.audioJogo?.Tocar(SomId.Sussurro);
             if (npcId == "marta") J.Mundo.pistaNomePrevio = true; // pista 1 (GDD 12)
         }
@@ -308,7 +310,7 @@ namespace Vigilia
             MudarEstado(EstadoInimigo.Morto);
             J.audioJogo?.Tocar(SomId.Pancada);
             J.ui.Tremer(0.5f, 0.3f);
-            J.ui.Mensagem($"{nome} não se mexe mais.");
+            J.ui.Mensagem(Idioma.T($"{Nome} não se mexe mais.", $"{Nome} doesn't move anymore."));
         }
 
         void Ouvir(Vector2 origem, float raio)

@@ -14,8 +14,8 @@ namespace Vigilia
 
         public override string Prompt(PlayerController p)
         {
-            if (!J.EhNoite) return "[E] Deitar e esperar a noite";
-            return PodeDormir(out var motivo) ? "[E] Dormir" : motivo;
+            if (!J.EhNoite) return Idioma.T("[E] Deitar e esperar a noite", "[E] Lie down and wait for night");
+            return PodeDormir(out var motivo) ? Idioma.T("[E] Dormir", "[E] Sleep") : motivo;
         }
 
         public override bool PodeUsar(PlayerController p) => !J.EhNoite || PodeDormir(out _);
@@ -26,21 +26,22 @@ namespace Vigilia
             var w = Mundo;
             if (cfg.noite3Fuga && J.EhNoite && w.noiteAtual >= 3)
             {
-                motivo = J.noites.EmFuga ? "Não há tempo. FUJA." : "Impossível dormir esta noite. Algo chama do subsolo.";
+                motivo = J.noites.EmFuga ? Idioma.T("Não há tempo. FUJA.", "No time. RUN.")
+                                         : Idioma.T("Impossível dormir esta noite. Algo chama do subsolo.", "No sleeping tonight. Something is calling from the basement.");
                 return false;
             }
             var quarto = J.temperatura != null ? J.temperatura.Quarto : null;
             bool quente = quarto == null || quarto.TemperaturaAtual == TemperaturaSala.Quente;
             if (cfg.p05DormirExigeQuartoQuente && !quente)
             {
-                if (!w.temCobertor) motivo = "Frio demais para dormir. Preciso de um cobertor.";
-                else if (w.caldeiraFalhou) motivo = "A caldeira apagou. O quarto está gelado. Preciso religá-la.";
-                else motivo = "Frio demais para dormir.";
+                if (!w.temCobertor) motivo = Idioma.T("Frio demais para dormir. Preciso de um cobertor.", "Too cold to sleep. I need a blanket.");
+                else if (w.caldeiraFalhou) motivo = Idioma.T("A caldeira apagou. O quarto está gelado. Preciso religá-la.", "The boiler went out. The room is freezing. I need to restart it.");
+                else motivo = Idioma.T("Frio demais para dormir.", "Too cold to sleep.");
                 return false;
             }
             if (cfg.p05DormirExigePortaAberta && !w.quartoDestrancado)
             {
-                motivo = "A porta precisa estar aberta.";
+                motivo = Idioma.T("A porta precisa estar aberta.", "The door needs to be open.");
                 return false;
             }
             motivo = null;

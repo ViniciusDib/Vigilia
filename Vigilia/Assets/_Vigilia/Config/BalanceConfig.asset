@@ -37,7 +37,7 @@ MonoBehaviour:
   tempoAtordoado: 8
   alcanceLanterna: 8
   meiaAberturaGraus: 28
-  consumoBateria: 0.4
+  consumoBateria: 0.7
   recargaPilha: 40
   bateriaFraca: 15
   inimigosPorNoite: 020000000600000008000000i
@@ -79,7 +79,8 @@ MonoBehaviour:
   fugaMultPossessao: 1.2
   fugaDistanciaMinimaExtras: 12
   corLuzFuga: {r: 0.9, g: 0.15, b: 0.12, a: 1}
-  volumeMusica: 0.85
+  volumeMusica: 0.6
+  volumePassos: 0.45
   intensidadeLuzGlobalDia: 0.65
   intensidadeLuzGlobalNoite: 0.035
   corLuzGlobalDia: {r: 0.78, g: 0.86, b: 1, a: 1}

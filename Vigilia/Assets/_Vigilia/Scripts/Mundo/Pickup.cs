@@ -35,28 +35,32 @@ namespace Vigilia
             gameObject.SetActive(disponivel && !coletado);
         }
 
-        public override string Prompt(PlayerController p) => $"[E] Pegar {titulo}";
+        /// <summary>Nome do item no idioma atual (tabela TextosCenaEN).</summary>
+        public string Titulo => Idioma.Cena(titulo);
+
+        public override string Prompt(PlayerController p) => Idioma.T("[E] Pegar ", "[E] Take ") + Titulo;
 
         public override void Interagir(PlayerController p)
         {
             var w = Mundo;
             w.itensColetados.Add(ChaveColeta);
-            string msg = $"Pegou: {titulo}";
+            string msg = Idioma.T("Pegou: ", "Picked up: ") + Titulo;
             switch (tipo)
             {
                 case TipoItem.Pilha:
                     J.lanterna.Recarregar();
-                    msg = "Pilha nova na lanterna.";
+                    msg = Idioma.T("Pilha nova na lanterna.", "Fresh battery in the flashlight.");
                     break;
                 case TipoItem.Cobertor:
                     w.temCobertor = true;
-                    msg = "Um cobertor grosso. Agora o quarto pode ficar quente.";
+                    msg = Idioma.T("Um cobertor grosso. Agora o quarto pode ficar quente.", "A thick blanket. Now the room can stay warm.");
                     break;
-                case TipoItem.Chave: w.temChave = true; msg = "A chave do quarto."; break;
-                case TipoItem.PeDeCabra: w.temPeDeCabra = true; msg = "Um pé de cabra. Rápido, mas barulhento."; break;
+                case TipoItem.Chave: w.temChave = true; msg = Idioma.T("A chave do quarto.", "The room key."); break;
+                case TipoItem.PeDeCabra: w.temPeDeCabra = true; msg = Idioma.T("Um pé de cabra. Rápido, mas barulhento.", "A crowbar. Fast, but loud."); break;
                 case TipoItem.Evidencia:
                     if (!w.evidenciasColetadas.Contains(id)) w.evidenciasColetadas.Add(id);
-                    msg = $"Evidência: {titulo}. Anote no caderno do quarto para não esquecer.";
+                    msg = Idioma.T($"Evidência: {Titulo}. Anote no caderno do quarto para não esquecer.",
+                                   $"Evidence: {Titulo}. Write it in the notebook in your room so you don't forget.");
                     break;
                 case TipoItem.NotaPropria: w.pistaNotaPropria = true; break;
                 case TipoItem.Pulseira: w.pistaPulseira = true; break;
@@ -64,13 +68,13 @@ namespace Vigilia
                     w.pistaDiretor = true;
                     foreach (var porta in Porta.Todas) porta.Atualizar();
                     break;
-                case TipoItem.Sedativo: w.sedativos++; msg = "Um sedativo. [Q] num possuído parado na luz."; break;
-                case TipoItem.ObjetoPesado: w.objetosPesados++; msg = "Algo pesado. [R] num possuído atordoado. Não tem volta."; break;
+                case TipoItem.Sedativo: w.sedativos++; msg = Idioma.T("Um sedativo. [Q] num possuído parado na luz.", "A sedative. [Q] on a possessed one frozen in the light."); break;
+                case TipoItem.ObjetoPesado: w.objetosPesados++; msg = Idioma.T("Algo pesado. [R] num possuído atordoado. Não tem volta.", "Something heavy. [R] on a stunned possessed one. There's no going back."); break;
             }
 
             J.audioJogo?.Tocar(SomId.Pegar);
             gameObject.SetActive(false);
-            if (!string.IsNullOrEmpty(textoDocumento)) J.ui.AbrirDocumento(titulo, textoDocumento);
+            if (!string.IsNullOrEmpty(textoDocumento)) J.ui.AbrirDocumento(Titulo, Idioma.Cena(textoDocumento));
             else J.ui.Mensagem(msg);
         }
     }

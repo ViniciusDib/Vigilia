@@ -15,7 +15,7 @@ namespace Vigilia
 
         public override bool Disponivel(PlayerController p) => base.Disponivel(p) && J.EhNoite && Mundo.caldeiraFalhou;
 
-        public override string Prompt(PlayerController p) => "[Segure E] Religar a caldeira";
+        public override string Prompt(PlayerController p) => Idioma.T("[Segure E] Religar a caldeira", "[Hold E] Restart the boiler");
 
         public override float TempoSegurar(PlayerController p) => Jogo.Cfg.tempoReligarCaldeira;
 
@@ -23,7 +23,7 @@ namespace Vigilia
         {
             Mundo.caldeiraFalhou = false;
             J.audioJogo?.Tocar(SomId.Caldeira);
-            J.ui.Mensagem("A caldeira volta a roncar. O quarto vai esquentar.");
+            J.ui.Mensagem(Idioma.T("A caldeira volta a roncar. O quarto vai esquentar.", "The boiler roars back to life. The room will warm up."));
             AtualizarVisual();
         }
 

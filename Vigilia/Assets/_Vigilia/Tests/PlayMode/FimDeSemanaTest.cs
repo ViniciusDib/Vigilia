@@ -84,6 +84,14 @@ namespace Vigilia.Tests
             SceneManager.LoadScene("Menu");
             yield return Esperar(1f);
             Foto("00_menu_clique");
+            // tela de créditos (confere se os nomes cabem)
+            var menu = UnityEngine.Object.FindAnyObjectByType<MenuPrincipal>();
+            var campoCreditos = typeof(MenuPrincipal).GetField("creditos", BindingFlags.Instance | BindingFlags.NonPublic);
+            var campoClique = typeof(MenuPrincipal).GetField("telaClique", BindingFlags.Instance | BindingFlags.NonPublic);
+            ((GameObject)campoClique.GetValue(menu)).SetActive(false);
+            typeof(MenuPrincipal).GetMethod("Mostrar", BindingFlags.Instance | BindingFlags.NonPublic).Invoke(menu, new[] { campoCreditos.GetValue(menu) });
+            yield return null;
+            Foto("00b_creditos");
 
             SceneManager.LoadScene("Jogo");
             yield return Esperar(1.5f);
@@ -198,6 +206,17 @@ namespace Vigilia.Tests
             j.ui.MostrarFinal(EndingResolver.ResolverCompleto(piorCaso, true, new FaixasMateria(), true));
             yield return Esperar(13f);
             Foto("11_final_c2");
+
+            // o mesmo pior caso em inglês (o texto em inglês costuma ser de outro tamanho)
+            var idiomaAntes = Idioma.Atual;
+            Idioma.Atual = Lingua.EN;
+            try
+            {
+                j.ui.MostrarFinal(EndingResolver.ResolverCompleto(piorCaso, true, new FaixasMateria(), true));
+                yield return Esperar(13f);
+                Foto("12_final_c2_en");
+            }
+            finally { Idioma.Atual = idiomaAntes; }
 
             // textura da cena do monstro
             if (!string.IsNullOrEmpty(pastaShots))

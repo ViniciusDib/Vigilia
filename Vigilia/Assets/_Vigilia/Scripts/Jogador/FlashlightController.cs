@@ -61,7 +61,7 @@ namespace Vigilia
                 if (Mundo.bateria <= 0f && !avisouApagou)
                 {
                     avisouApagou = true;
-                    j.ui.Mensagem("A lanterna apagou. Procure uma pilha.");
+                    j.ui.Mensagem(Idioma.T("A lanterna apagou. Procure uma pilha.", "The flashlight died. Find a battery."));
                 }
             }
 

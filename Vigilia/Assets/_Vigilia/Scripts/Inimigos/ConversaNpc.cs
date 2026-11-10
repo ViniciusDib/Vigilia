@@ -13,7 +13,7 @@ namespace Vigilia
         public override bool Disponivel(PlayerController p)
             => base.Disponivel(p) && !J.EhNoite && !npc.EhNoturno;
 
-        public override string Prompt(PlayerController p) => $"[E] Falar com {npc.nome}";
+        public override string Prompt(PlayerController p) => Idioma.T("[E] Falar com ", "[E] Talk to ") + npc.Nome;
 
         public override void Interagir(PlayerController p) => J.dialogo.Conversar(npc);
     }

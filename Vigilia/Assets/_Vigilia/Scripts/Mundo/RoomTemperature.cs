@@ -48,7 +48,7 @@ namespace Vigilia
             if (nova != null && nova != SalaAtual)
             {
                 SalaAtual = nova;
-                j.ui?.NomeSala(nova.nome);   // ajuda a reconhecer cada cômodo
+                j.ui?.NomeSala(Idioma.Cena(nova.nome));   // ajuda a reconhecer cada cômodo
             }
             if (SalaAtual == null || j.Travado) return;
 

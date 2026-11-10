@@ -2,6 +2,8 @@
 
 Jogo 2D de suspense, visto de cima, em Unity (URP 2D, Light 2D), com build WebGL para o itch.io.
 Projeto 2D da disciplina Jogos Digitais, Insper 2026.1.
+Feito por **Vinicius Dib, Greta Faria, Enzo Christofoletti e Thomas Rudge**.
+Disponível em português e inglês (botão "Idioma / Language" no menu).
 
 > Quem não dorme é possuído. Elias Vaughn, jornalista, passa três dias e três noites num sanatório no Alasca.
 > À noite, os possuídos andam até ele e só param sob a luz da lanterna. Ele precisa dormir antes de transbordar.
@@ -76,4 +78,6 @@ A disciplina exige crédito para todo asset e todo trecho de código de terceiro
 | Template do projeto | Unity 2D (URP) template 7.0.0 | Unity |
 | Código do jogo | Escrito com auxílio do Claude Code (Anthropic) a partir do GDD do grupo | — |
 
-TODO: nomes do grupo, assets finais (arte, sons, trilha) com as respectivas licenças.
+Grupo: Vinicius Dib, Greta Faria, Enzo Christofoletti e Thomas Rudge.
+
+TODO: assets finais (arte, sons, trilha) com as respectivas licenças.

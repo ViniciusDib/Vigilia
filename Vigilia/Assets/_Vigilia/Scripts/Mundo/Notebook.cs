@@ -29,6 +29,7 @@ namespace Vigilia
         public override string Prompt(PlayerController p)
         {
             int n = Novas;
+            if (Idioma.Ingles) return n > 0 ? $"[E] Write in the notebook ({n} new piece{(n > 1 ? "s" : "")} of evidence)" : "[E] Write in the notebook";
             return n > 0 ? $"[E] Escrever no caderno ({n} evidência{(n > 1 ? "s" : "")} nova{(n > 1 ? "s" : "")})" : "[E] Escrever no caderno";
         }
 
@@ -44,8 +45,10 @@ namespace Vigilia
                 if (!Mundo.evidenciasAnotadas.Contains(e)) { Mundo.evidenciasAnotadas.Add(e); n++; }
             lucidoRestante = Jogo.Cfg.duracaoLucido;
             J.ui.Mensagem(n > 0
-                ? $"Anotado: {n} evidência{(n > 1 ? "s" : "")}. Escrever acalma. Você está lúcido por um tempo."
-                : "Você escreve o que lembra. Escrever acalma. Você está lúcido por um tempo.");
+                ? Idioma.T($"Anotado: {n} evidência{(n > 1 ? "s" : "")}. Escrever acalma. Você está lúcido por um tempo.",
+                           $"Written down: {n} piece{(n > 1 ? "s" : "")} of evidence. Writing calms you. You're lucid for a while.")
+                : Idioma.T("Você escreve o que lembra. Escrever acalma. Você está lúcido por um tempo.",
+                           "You write what you remember. Writing calms you. You're lucid for a while."));
         }
 
         /// <summary>O estado lúcido não está no snapshot: ao restaurar a noite, ele zera.</summary>

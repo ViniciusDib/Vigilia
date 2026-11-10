@@ -75,7 +75,7 @@ namespace Vigilia
         public void Tocar(SomId id)
         {
             if (!mapa.TryGetValue(id, out var c) || c == null) return;
-            float vol = id == SomId.Passo ? 0.25f : id == SomId.Toque || id == SomId.Stinger || id == SomId.Transbordo ? 0.9f : 0.6f;
+            float vol = id == SomId.Passo ? Jogo.Cfg.volumePassos : id == SomId.Toque || id == SomId.Stinger || id == SomId.Transbordo ? 0.9f : 0.6f;
             efeitos.PlayOneShot(c, vol);
         }
 

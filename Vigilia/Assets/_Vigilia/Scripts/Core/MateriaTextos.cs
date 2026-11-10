@@ -71,21 +71,84 @@ namespace Vigilia
             ["M-sem-provas@C"] = "O diretor, Dr. Alaric Holt, afirma que o subsolo do prédio está desativado há décadas.",
         };
 
+        /// <summary>Mesmos ids, em inglês (traduzidos em 09/11). Um teste confere que nenhum id ficou sem tradução.</summary>
+        static readonly Dictionary<string, string> textosEN = new Dictionary<string, string>
+        {
+            // ---------------------------------------------------------------- headlines
+            ["H-A"] = "The sanatorium where no one sleeps: three nights at St. Brenna",
+            ["H-B"] = "Alaska sanatorium struggles with poor heating and understaffing",
+            ["H-C1"] = "Missing journalist found in the snow outside Alaska sanatorium",
+            ["H-C2"] = "Journalist found with blood on his clothes outside Alaska sanatorium",
+
+            // ---------------------------------------------------------------- the escape (night 3)
+            ["F@A"] = "On the third night, a door in the basement opened by itself. What was waiting inside doesn't fit in this story, " +
+                      "and I'm not sure it would fit in any. I ran down the east corridor with them behind me, all of them with their eyes open, " +
+                      "and I only stopped when I felt the snow on my face.",
+            ["F@B"] = "I left the building early Sunday morning, through the main door, a little ahead of schedule. " +
+                      "Personal reasons. There were no incidents worth reporting.",
+            ["F@C"] = "Staff say the man spent Saturday night walking the corridors with a lit flashlight, " +
+                      "repeating that he had to find the way out. In the morning, no one remembered seeing him come in.",
+
+            // ---------------------------------------------------------------- truth (evidence written down)
+            ["V0"] = "I brought back no documents. All I have are memories no one else confirms, and here, remembering is exactly the problem.",
+            ["V1"] = "I brought back a few notes, scribbled in a notebook: staff who forget everything at dawn, " +
+                     "always at the same hour, always the same way.",
+            ["V2"] = "I brought back files, shift logs and a whole notebook of notes. They all say the same thing: " +
+                     "whoever doesn't sleep at St. Brenna stops being who they were.",
+            ["V0@B"] = "The administration provided no documents. Nor did this reporter find any.",
+            ["V1@B"] = "The few internal records this reporter was able to see are scattered and inconsistent.",
+            ["V2@B"] = "This reporter had access to files and internal records. It is not the place to detail them here.",
+            ["V0@C"] = "He carried no documents. Only a flashlight, its battery nearly dead.",
+            ["V1@C"] = "In his coat pocket was a notebook with only a few pages filled. The handwriting changes in the middle of a sentence.",
+            ["V2@C"] = "In his coat pocket was a full notebook. The notes describe a rule, \"whoever doesn't sleep is possessed\", " +
+                       "and end with his own name, written as if it belonged to someone else.",
+
+            // ---------------------------------------------------------------- violence (matouAlguem)
+            ["X0"] = "No one was hurt. At least, no one anyone remembers.",
+            ["X1"] = "About the east wing, I'd rather not go into detail. The staff insist there was never anyone by that name, " +
+                     "and for now I'll believe them.",
+            ["X0@C"] = "State police reported no injuries.",
+            ["X1@C"] = "Staff deny anyone was missing from the night shift. But there is a name crossed out on the ward board, " +
+                       "and no one can say who crossed it out.",
+
+            // ---------------------------------------------------------------- exposure (vezesTocado)
+            ["E0"] = "I made it through the nights without any of them reaching me. I don't know if I was lucky or if they let me pass.",
+            ["E1"] = "There were cold hands in the dark, more than once. I still feel the fingers on my shoulder when I turn off the light.",
+            ["E2"] = "I reread the last pages of the notebook and the handwriting is no longer mine. In some, I speak of myself as a patient.",
+            ["E0@B"] = "The stay passed without contact with the patients.",
+            ["E0@C"] = "There were no marks on the body.",
+            ["E1@C"] = "There were finger marks on his shoulders and wrists, already turning purple.",
+            ["E2@C"] = "His arms were covered in finger marks. A doctor who asked not to be named said it " +
+                       "\"looked like many hands had held him at the same time\".",
+
+            // ---------------------------------------------------------------- modifiers
+            ["M-porta"] = "The door to the room where I stayed was broken down on the second night. No one asked why.",
+            ["M-porta@B"] = "There was minor property damage to the facilities, already reported to the administration.",
+            ["M-porta@C"] = "The door to the room where he stayed had been broken down.",
+            ["M-sem-provas"] = "I never made it to the basement. Without proof of what lies down there, the administration denies any wrongdoing.",
+            ["M-sem-provas@C"] = "The director, Dr. Alaric Holt, says the building's basement has been out of use for decades.",
+        };
+
+        static Dictionary<string, string> Tabela => Idioma.Ingles ? textosEN : textos;
+
         /// <summary>Texto geral do bloco. Nunca devolve vazio: bloco sem texto vira um aviso visível.</summary>
         public static string Texto(string id)
-            => textos.TryGetValue(id, out var t) ? t : $"[bloco {id} sem texto · TODO(Q-03)]";
+            => Tabela.TryGetValue(id, out var t) ? t : textos.TryGetValue(id, out var pt) ? pt : $"[bloco {id} sem texto · TODO(Q-03)]";
 
         /// <summary>Texto do bloco para um final: usa a versão "@A/@B/@C" se existir; senão, a geral.</summary>
         public static string Texto(string id, FinalMateria final)
         {
             string sufixo = final == FinalMateria.Honesta ? "@A" : final == FinalMateria.Omite ? "@B" : "@C";
-            return textos.TryGetValue(id + sufixo, out var t) ? t : Texto(id);
+            return Tabela.TryGetValue(id + sufixo, out var t) ? t : Texto(id);
         }
 
         /// <summary>Linha de autoria embaixo da manchete.</summary>
         public static string Autoria(FinalMateria final)
-            => final == FinalMateria.Louco ? "Da redação, com informações da polícia estadual do Alasca" : "Por Elias Vaughn, enviado especial";
+            => final == FinalMateria.Louco
+                ? Idioma.T("Da redação, com informações da polícia estadual do Alasca", "Staff report, with information from the Alaska State Police")
+                : Idioma.T("Por Elias Vaughn, enviado especial", "By Elias Vaughn, special correspondent");
 
         public static IEnumerable<string> TodosOsIds => textos.Keys;
+        public static IEnumerable<string> TodosOsIdsEN => textosEN.Keys;
     }
 }

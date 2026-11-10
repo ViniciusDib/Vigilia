@@ -64,11 +64,12 @@ namespace Vigilia
 
         public override string Prompt(PlayerController p)
         {
-            if (tipo == Tipo.Secreta) return "Trancada. Atrás das prateleiras há uma passagem... (falta alguma pista)";
-            if (tipo == Tipo.Saida) return "A porta principal. Trancada por fora.";
-            if (Mundo.temChave) return "[Segure E] Abrir com a chave";
-            if (Mundo.temPeDeCabra) return "Trancada. [G] Arrombar com o pé de cabra";
-            return "Trancada. Chave: escritório do diretor · Pé de cabra: oficina";
+            if (tipo == Tipo.Secreta) return Idioma.T("Trancada. Atrás das prateleiras há uma passagem... (falta alguma pista)",
+                                                      "Locked. There's a passage behind the shelves... (you're missing a clue)");
+            if (tipo == Tipo.Saida) return Idioma.T("A porta principal. Trancada por fora.", "The main door. Locked from outside.");
+            if (Mundo.temChave) return Idioma.T("[Segure E] Abrir com a chave", "[Hold E] Open with the key");
+            if (Mundo.temPeDeCabra) return Idioma.T("Trancada. [G] Arrombar com o pé de cabra", "Locked. [G] Force it with the crowbar");
+            return Idioma.T("Trancada. Chave: escritório do diretor · Pé de cabra: oficina", "Locked. Key: director's office · Crowbar: workshop");
         }
 
         public override bool PodeUsar(PlayerController p) => tipo == Tipo.Quarto && Mundo.temChave;
@@ -80,12 +81,12 @@ namespace Vigilia
             if (!PodeUsar(p)) return;
             Mundo.quartoDestrancado = true;
             J.audioJogo?.Tocar(SomId.Porta);
-            J.ui.Mensagem("A fechadura cede. O quarto está aberto.");
+            J.ui.Mensagem(Idioma.T("A fechadura cede. O quarto está aberto.", "The lock gives. The room is open."));
             Atualizar();
         }
 
         public override string PromptAlternativo(PlayerController p)
-            => tipo == Tipo.Quarto && Mundo.temPeDeCabra && Mundo.temChave ? "[G] Arrombar com o pé de cabra" : null;
+            => tipo == Tipo.Quarto && Mundo.temPeDeCabra && Mundo.temChave ? Idioma.T("[G] Arrombar com o pé de cabra", "[G] Force it with the crowbar") : null;
 
         public override void InteragirAlternativo(PlayerController p)
         {
@@ -99,7 +100,7 @@ namespace Vigilia
             }
             J.audioJogo?.Tocar(SomId.Pancada);
             J.ui.Tremer(0.35f, 0.25f);
-            J.ui.Mensagem("CRACK. A porta cede. Isso deve ter sido ouvido.");
+            J.ui.Mensagem(Idioma.T("CRACK. A porta cede. Isso deve ter sido ouvido.", "CRACK. The door gives way. Someone must have heard that."));
             Atualizar();
         }
     }

@@ -151,20 +151,23 @@ namespace Vigilia
         IEnumerator CartaoDia(int dia)
         {
             J.EmCena = true;
-            yield return J.ui.Cartao($"DIA {dia}", NomeDoDia(dia), 2.2f);
+            yield return J.ui.Cartao(Idioma.T("DIA", "DAY") + $" {dia}", NomeDoDia(dia), 2.2f);
             yield return J.ui.Fade(false, 1f);
             J.EmCena = false;
             J.ui.Objetivo(ObjetivoDoDia(dia));
         }
 
-        static string NomeDoDia(int d) => d == 1 ? "sexta-feira" : d == 2 ? "sábado" : "domingo";
+        static string NomeDoDia(int d) => d == 1 ? Idioma.T("sexta-feira", "Friday") : d == 2 ? Idioma.T("sábado", "Saturday") : Idioma.T("domingo", "Sunday");
 
         string ObjetivoDoDia(int dia)
         {
             // TODO(Q-18): objetivos de dia ligados às pistas.
-            if (dia == 1) return "Explore o sanatório e converse com quem encontrar. Quando quiser, deite na cama para esperar a noite.";
-            if (dia == 2) return "Pergunte sobre a noite passada. Alguém lembra? Escreva o que achou no caderno do quarto.";
-            return "O escritório do diretor fica no corredor norte. Procure algo que explique tudo. Depois, a cama.";
+            if (dia == 1) return Idioma.T("Explore o sanatório e converse com quem encontrar. Quando quiser, deite na cama para esperar a noite.",
+                                          "Explore the sanatorium and talk to whoever you meet. When you're ready, lie down on the bed to wait for night.");
+            if (dia == 2) return Idioma.T("Pergunte sobre a noite passada. Alguém lembra? Escreva o que achou no caderno do quarto.",
+                                          "Ask about last night. Does anyone remember? Write what you found in the notebook in your room.");
+            return Idioma.T("O escritório do diretor fica no corredor norte. Procure algo que explique tudo. Depois, a cama.",
+                            "The director's office is in the north corridor. Look for something that explains everything. Then, bed.");
         }
 
         void ConfigurarDia(int dia)
@@ -191,7 +194,7 @@ namespace Vigilia
             ConfigurarNoite(n, primeiraVez: true);
             J.possessao.IniciarNoite();
             CapturarCheckpoint();
-            yield return J.ui.Cartao($"NOITE {n}", SituacaoInicial(n), 3.2f);
+            yield return J.ui.Cartao(Idioma.T("NOITE", "NIGHT") + $" {n}", SituacaoInicial(n), 3.2f);
             yield return J.ui.Fade(false, 1.2f);
             J.EmCena = false;
             J.ui.Objetivo(ObjetivoDaNoite(n));
@@ -269,7 +272,7 @@ namespace Vigilia
             ConfigurarNoite(n, primeiraVez: false);
             J.jogador.Teleportar(posicoes.jogador);
             J.possessao.IniciarNoite();
-            yield return J.ui.Cartao($"NOITE {n}", "continuando do início da noite", 2.2f);
+            yield return J.ui.Cartao(Idioma.T("NOITE", "NIGHT") + $" {n}", Idioma.T("continuando do início da noite", "continuing from the start of the night"), 2.2f);
             yield return J.ui.Fade(false, 1f);
             J.EmCena = false;
             J.ui.Objetivo(ObjetivoDaNoite(n));
@@ -277,23 +280,32 @@ namespace Vigilia
 
         string SituacaoInicial(int n)
         {
-            if (n == 1) return "O quarto está gelado. Sem cobertor, não há como dormir. No corredor, um barulho.";
-            if (n == 2) return "Um estrondo no corredor. Você sai para ver. A porta do quarto se fecha atrás de você.";
+            if (n == 1) return Idioma.T("O quarto está gelado. Sem cobertor, não há como dormir. No corredor, um barulho.",
+                                        "The room is freezing. Without a blanket, there's no way to sleep. In the corridor, a noise.");
+            if (n == 2) return Idioma.T("Um estrondo no corredor. Você sai para ver. A porta do quarto se fecha atrás de você.",
+                                        "A crash in the corridor. You step out to look. The bedroom door shuts behind you.");
             if (Cfg.noite3Fuga)
-                return "Você não consegue dormir. Do subsolo vem um rangido longo: uma porta se abrindo. Esta é a última noite.";
+                return Idioma.T("Você não consegue dormir. Do subsolo vem um rangido longo: uma porta se abrindo. Esta é a última noite.",
+                                "You can't sleep. From the basement comes a long creak: a door opening. This is the last night.");
             return Cfg.noite3CaldeiraFalha
-                ? "A caldeira silenciou. O quarto esfria depressa. Esta é a última noite."
-                : "Esta é a última noite.";
+                ? Idioma.T("A caldeira silenciou. O quarto esfria depressa. Esta é a última noite.", "The boiler has gone silent. The room cools fast. This is the last night.")
+                : Idioma.T("Esta é a última noite.", "This is the last night.");
         }
 
         string ObjetivoDaNoite(int n)
         {
-            if (n == 1) return "Encontre um cobertor e volte ao quarto para dormir. Mantenha os possuídos na luz da lanterna.";
-            if (n == 2) return "Você está trancado fora do quarto. Ache a chave (escritório) ou um pé de cabra (oficina).";
-            if (EmFuga) return "FUJA! A porta principal fica no fim do corredor, a leste. Não pare.";
-            if (Cfg.noite3Fuga) return "A porta atrás do arquivo do subsolo se abriu. Vá até lá.";
-            string s = Cfg.noite3CaldeiraFalha ? "Religue a caldeira e volte ao quarto para dormir antes de transbordar." : "Durma antes de transbordar.";
-            if (J.Mundo.pistaDiretor && !J.Mundo.viuSalaSecreta) s += " A passagem do subsolo está aberta.";
+            if (n == 1) return Idioma.T("Encontre um cobertor e volte ao quarto para dormir. Mantenha os possuídos na luz da lanterna.",
+                                        "Find a blanket and go back to your room to sleep. Keep the possessed in your flashlight beam.");
+            if (n == 2) return Idioma.T("Você está trancado fora do quarto. Ache a chave (escritório) ou um pé de cabra (oficina).",
+                                        "You're locked out of your room. Find the key (office) or a crowbar (workshop).");
+            if (EmFuga) return Idioma.T("FUJA! A porta principal fica no fim do corredor, a leste. Não pare.",
+                                        "RUN! The main door is at the end of the east corridor. Don't stop.");
+            if (Cfg.noite3Fuga) return Idioma.T("A porta atrás do arquivo do subsolo se abriu. Vá até lá.",
+                                                "The door behind the basement archive has opened. Go there.");
+            string s = Cfg.noite3CaldeiraFalha
+                ? Idioma.T("Religue a caldeira e volte ao quarto para dormir antes de transbordar.", "Restart the boiler and get back to your room to sleep before you overflow.")
+                : Idioma.T("Durma antes de transbordar.", "Sleep before you overflow.");
+            if (J.Mundo.pistaDiretor && !J.Mundo.viuSalaSecreta) s += Idioma.T(" A passagem do subsolo está aberta.", " The basement passage is open.");
             return s;
         }
 
@@ -318,10 +330,11 @@ namespace Vigilia
             if (Cfg.encontroAoTransbordar && J.encontro != null)
                 yield return J.encontro.Tocar(Cfg.duracaoEncontro, "");
             // TODO(Q-20): texto e feedback finais da tela de transbordo.
-            yield return J.ui.TelaTransbordo("Você não conseguiu ficar acordado sem ser tomado.\nA noite recomeça.", 3f);
+            yield return J.ui.TelaTransbordo(Idioma.T("Você não conseguiu ficar acordado sem ser tomado.\nA noite recomeça.",
+                                                      "You couldn't stay awake without being taken.\nThe night starts over."), 3f);
             RestaurarCheckpoint();
             int n = J.Mundo.noiteAtual;
-            yield return J.ui.Cartao($"NOITE {n}", "de novo, do começo", 1.8f);
+            yield return J.ui.Cartao(Idioma.T("NOITE", "NIGHT") + $" {n}", Idioma.T("de novo, do começo", "again, from the beginning"), 1.8f);
             yield return J.ui.Fade(false, 1f);
             J.EmCena = false;
             emSequencia = false;
@@ -336,7 +349,8 @@ namespace Vigilia
             J.jogador.MarcarTransbordou();
             J.audioJogo?.Tocar(SomId.Transbordo);
             if (Cfg.encontroAoTransbordar && J.encontro != null) yield return J.encontro.Tocar(Cfg.duracaoEncontro, "");
-            yield return J.ui.TelaTransbordo("Você parou de correr. Alguma coisa terminou de entrar.", 3f);
+            yield return J.ui.TelaTransbordo(Idioma.T("Você parou de correr. Alguma coisa terminou de entrar.",
+                                                      "You stopped running. Something finished getting in."), 3f);
             EmFuga = false;
             emSequencia = false;
             MudarEstado(EstadoMacro.FinalC);
@@ -364,7 +378,7 @@ namespace Vigilia
                 MudarEstado(J.Mundo.matouAlguem ? EstadoMacro.FinalB : EstadoMacro.FinalA); // M-10 / M-11
                 yield break;
             }
-            yield return J.ui.Cartao("06:00", "Ninguém lembra da noite. Só você.", 2.6f);
+            yield return J.ui.Cartao("06:00", Idioma.T("Ninguém lembra da noite. Só você.", "No one remembers the night. Only you."), 2.6f);
             J.Memoria.Limpar();                               // reset das 06:00 (D-07)
             J.Mundo.noiteAtual = n + 1;
             emSequencia = false;
@@ -397,7 +411,8 @@ namespace Vigilia
                 yield return J.encontro.Tocar(Cfg.duracaoEncontro, "");
             IniciarFuga();
             J.ui.Tremer(0.6f, 0.6f);
-            J.ui.Legenda("CORRA. A porta principal está aberta, no fim do corredor leste.", 5f);
+            J.ui.Legenda(Idioma.T("CORRA. A porta principal está aberta, no fim do corredor leste.",
+                                  "RUN. The main door is open, at the end of the east corridor."), 5f);
             J.EmCena = false;
             emSequencia = false;
             J.ui.Objetivo(ObjetivoDaNoite(3));
@@ -442,7 +457,8 @@ namespace Vigilia
             emSequencia = true;
             J.EmCena = true;
             yield return J.ui.Fade(true, 1.5f);
-            yield return J.ui.Cartao("LÁ FORA", "A neve. O frio. O sanatório apagado atrás de você.", 3f);
+            yield return J.ui.Cartao(Idioma.T("LÁ FORA", "OUTSIDE"), Idioma.T("A neve. O frio. O sanatório apagado atrás de você.",
+                                                                             "The snow. The cold. The sanatorium dark behind you."), 3f);
             EmFuga = false;
             emSequencia = false;
             MudarEstado(J.Mundo.matouAlguem ? EstadoMacro.FinalB : EstadoMacro.FinalA); // M-10 / M-11 (pela saída)
@@ -453,9 +469,11 @@ namespace Vigilia
             emSequencia = true;
             J.EmCena = true;
             // TODO(Q-01, Q-02): o que existe na sala secreta e o que se descobre sobre o diretor.
-            yield return J.ui.Documento("Sala secreta",
+            yield return J.ui.Documento(Idioma.T("Sala secreta", "Secret room"), Idioma.T(
                 "Prontuários com o carimbo do Dr. Holt. Um gráfico de horas de sono por interno, noite após noite.\n" +
-                "Na última ficha, a letra é a sua.\n\n[TODO(Q-02): conteúdo final da sala secreta]");
+                "Na última ficha, a letra é a sua.\n\n[TODO(Q-02): conteúdo final da sala secreta]",
+                "Patient files stamped by Dr. Holt. A chart of hours slept per patient, night after night.\n" +
+                "On the last file, the handwriting is yours.\n\n[TODO(Q-02): final content of the secret room]"));
             J.EmCena = false;
             emSequencia = false;
         }

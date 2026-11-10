@@ -50,7 +50,7 @@ namespace Vigilia
         public float alcanceLanterna = 8f;
         public float meiaAberturaGraus = 28f;
         [Tooltip("Pontos de bateria por segundo com a lanterna ligada.")]
-        public float consumoBateria = 0.4f;
+        public float consumoBateria = 0.7f;
         public float recargaPilha = 40f;
         [Tooltip("[EXTRA] Abaixo disso a lanterna pisca.")]
         public float bateriaFraca = 15f;
@@ -135,7 +135,9 @@ namespace Vigilia
         public Color corLuzFuga = new Color(0.9f, 0.15f, 0.12f);
 
         [Header("Música")]
-        [Range(0f, 1f)] public float volumeMusica = 0.85f;
+        [Range(0f, 1f)] public float volumeMusica = 0.6f;
+        [Tooltip("Volume dos passos de Elias (ajuste de 09/11: mais audíveis).")]
+        [Range(0f, 1f)] public float volumePassos = 0.45f;
 
         [Header("Luz e visual [EXTRA]")]
         public float intensidadeLuzGlobalDia = 0.65f;

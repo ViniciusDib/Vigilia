@@ -146,7 +146,7 @@ namespace Vigilia
             UIFabrica.Ancorar(nomeDialogo.rectTransform, new Vector2(0, 1), new Vector2(1, 1), new Vector2(300, -70), new Vector2(-30, -20));
             textoDialogo = UIFabrica.Texto("Texto", p.transform, "", 32, TextAnchor.UpperLeft, UIFabrica.Papel);
             UIFabrica.Ancorar(textoDialogo.rectTransform, Vector2.zero, Vector2.one, new Vector2(300, 50), new Vector2(-30, -80));
-            var dica = UIFabrica.Texto("Dica", p.transform, "[E] continuar", 20, TextAnchor.LowerRight, new Color(0.6f, 0.6f, 0.6f));
+            var dica = UIFabrica.Texto("Dica", p.transform, Idioma.T("[E] continuar", "[E] continue"), 20, TextAnchor.LowerRight, new Color(0.6f, 0.6f, 0.6f));
             UIFabrica.Ancorar(dica.rectTransform, Vector2.zero, new Vector2(1, 0), new Vector2(0, 12), new Vector2(-24, 40));
             painelDialogo.SetActive(false);
         }
@@ -162,7 +162,7 @@ namespace Vigilia
             UIFabrica.Ancorar(docTitulo.rectTransform, new Vector2(0, 1), new Vector2(1, 1), new Vector2(40, -110), new Vector2(-40, -40));
             docTexto = UIFabrica.Texto("Texto", papel.transform, "", 30, TextAnchor.UpperLeft, UIFabrica.Tinta, FontStyle.Italic);
             UIFabrica.Ancorar(docTexto.rectTransform, Vector2.zero, Vector2.one, new Vector2(50, 80), new Vector2(-50, -130));
-            var dica = UIFabrica.Texto("Dica", papel.transform, "[E] fechar", 22, TextAnchor.LowerCenter, new Color(0.4f, 0.35f, 0.3f));
+            var dica = UIFabrica.Texto("Dica", papel.transform, Idioma.T("[E] fechar", "[E] close"), 22, TextAnchor.LowerCenter, new Color(0.4f, 0.35f, 0.3f));
             UIFabrica.Ancorar(dica.rectTransform, Vector2.zero, new Vector2(1, 0), new Vector2(0, 20), new Vector2(0, 60));
             painelDoc.SetActive(false);
         }
@@ -188,7 +188,7 @@ namespace Vigilia
             introImagem.gameObject.SetActive(false);
             introTexto = UIFabrica.Texto("Texto", f.transform, "", 40, TextAnchor.MiddleCenter, UIFabrica.Papel);
             UIFabrica.Ancorar(introTexto.rectTransform, new Vector2(0.15f, 0.25f), new Vector2(0.85f, 0.75f));
-            introDica = UIFabrica.Texto("Dica", f.transform, "[Espaço] continuar    [Esc] pular", 22, TextAnchor.LowerCenter, new Color(0.5f, 0.5f, 0.5f));
+            introDica = UIFabrica.Texto("Dica", f.transform, Idioma.T("[Espaço] continuar    [Esc] pular", "[Space] continue    [Esc] skip"), 22, TextAnchor.LowerCenter, new Color(0.5f, 0.5f, 0.5f));
             UIFabrica.Ancorar(introDica.rectTransform, Vector2.zero, new Vector2(1, 0), new Vector2(0, 30), new Vector2(0, 70));
             painelIntro.SetActive(false);
         }
@@ -226,7 +226,7 @@ namespace Vigilia
             var botoes = UIFabrica.Rect("Botoes", f.transform);
             UIFabrica.Ancorar(botoes, new Vector2(0.35f, 0.02f), new Vector2(0.65f, 0.12f));
             UIFabrica.Coluna(botoes, 10);
-            UIFabrica.Botao("Voltar ao menu", botoes, VoltarAoMenu);
+            UIFabrica.Botao(Idioma.T("Voltar ao menu", "Back to menu"), botoes, VoltarAoMenu);
             painelFinal.SetActive(false);
         }
 
@@ -238,15 +238,16 @@ namespace Vigilia
             var col = UIFabrica.Rect("Coluna", f.transform);
             UIFabrica.Ancorar(col, new Vector2(0.3f, 0.2f), new Vector2(0.7f, 0.8f));
             UIFabrica.Coluna(col, 18);
-            var t = UIFabrica.Texto("Titulo", col, "PAUSA", 70, TextAnchor.MiddleCenter, UIFabrica.Papel, FontStyle.Bold);
+            var t = UIFabrica.Texto("Titulo", col, Idioma.T("PAUSA", "PAUSED"), 70, TextAnchor.MiddleCenter, UIFabrica.Papel, FontStyle.Bold);
             t.gameObject.AddComponent<LayoutElement>().preferredHeight = 120;
-            UIFabrica.Botao("Continuar", col, () => Pausar(false));
+            UIFabrica.Botao(Idioma.T("Continuar", "Resume"), col, () => Pausar(false));
             var v = UIFabrica.Texto("Volume", col, "Volume", 26, TextAnchor.MiddleCenter, new Color(0.7f, 0.7f, 0.7f));
             v.gameObject.AddComponent<LayoutElement>().preferredHeight = 40;
             UIFabrica.Slider(col, SaveJogo.Volume, x => SaveJogo.Volume = x);
-            UIFabrica.Botao("Voltar ao menu", col, VoltarAoMenu);
+            UIFabrica.Botao(Idioma.T("Voltar ao menu", "Back to menu"), col, VoltarAoMenu);
             var ajuda = UIFabrica.Texto("Controles", col,
-                "WASD andar · Mouse mirar · F lanterna · E interagir · G arrombar · Q sedativo · R golpe · Esc pausa · F1 debug",
+                Idioma.T("WASD andar · Mouse mirar · F lanterna · E interagir · G arrombar · Q sedativo · R golpe · Esc pausa · F1 debug",
+                         "WASD move · Mouse aim · F flashlight · E interact · G force door · Q sedative · R strike · Esc pause · F1 debug"),
                 20, TextAnchor.MiddleCenter, new Color(0.55f, 0.55f, 0.55f));
             ajuda.gameObject.AddComponent<LayoutElement>().preferredHeight = 80;
             painelPausa.SetActive(false);
@@ -399,7 +400,18 @@ namespace Vigilia
         /// <summary>Intro obrigatória, curta e pulável (D-03). TODO(Q-03): texto final dos 5 quadros.</summary>
         public void MostrarIntro(Action fim) => StartCoroutine(RodarIntro(fim));
 
-        static readonly string[] QuadrosIntro =
+        static string[] QuadrosIntro => Idioma.Ingles ? QuadrosIntroEN : QuadrosIntroPT;
+
+        static readonly string[] QuadrosIntroEN =
+        {
+            "Alaska, winter.\nSt. Brenna Sanatorium is four hours from the nearest town.\nThe road closes with the first snow.",
+            "For months, letters have been reaching the newsroom.\nPatients and staff who, every morning,\nremember nothing of the night before.",
+            "Elias Vaughn, journalist, will spend the weekend there.\nThree days. Three nights.",
+            "Before he leaves, one last letter, unsigned:\n\n<i>\"There is a rule here.\nWhoever doesn't sleep is possessed.\"</i>",
+            "Sleep before it's too late.\nKeep them in your flashlight beam: only what the light touches stays still.\nAnd write everything down. In the morning, only you will remember.\n\n<size=26>WASD move · Mouse aim · F flashlight · E interact · Esc pause</size>",
+        };
+
+        static readonly string[] QuadrosIntroPT =
         {
             "Alasca, inverno.\nO Sanatório St. Brenna fica a quatro horas da cidade mais próxima.\nA estrada fecha com a primeira neve.",
             "Há meses chegam cartas à redação.\nInternos e funcionários que, toda manhã,\nnão lembram nada da noite anterior.",
@@ -455,9 +467,10 @@ namespace Vigilia
             painelFinal.SetActive(true);
             finalManchete.text = "";
             finalCorpo.text = "";
-            string rotulo = r.final == FinalMateria.Honesta ? "FINAL A · A MATÉRIA HONESTA"
-                          : r.final == FinalMateria.Omite ? "FINAL B · A MATÉRIA QUE OMITE"
-                          : r.variacaoSangue ? "FINAL C · O JORNALISTA É O LOUCO (variação 2)" : "FINAL C · O JORNALISTA É O LOUCO";
+            string rotulo = r.final == FinalMateria.Honesta ? Idioma.T("FINAL A · A MATÉRIA HONESTA", "ENDING A · THE HONEST STORY")
+                          : r.final == FinalMateria.Omite ? Idioma.T("FINAL B · A MATÉRIA QUE OMITE", "ENDING B · THE STORY THAT HIDES")
+                          : r.variacaoSangue ? Idioma.T("FINAL C · O JORNALISTA É O LOUCO (variação 2)", "ENDING C · THE JOURNALIST IS THE MADMAN (variation 2)")
+                          : Idioma.T("FINAL C · O JORNALISTA É O LOUCO", "ENDING C · THE JOURNALIST IS THE MADMAN");
             finalRotulo.text = rotulo;
             yield return Fade(false, 1.5f);
 
@@ -471,7 +484,9 @@ namespace Vigilia
                 for (float t = 0; t < 1.2f; t += Time.unscaledDeltaTime) yield return null;
             }
             if (r.variacaoSangue)
-                sb.Append("<color=#851417><i>Na manga do casaco, uma mancha escura. Na última página do caderno, na letra dele, uma única pergunta: \"fui eu?\"</i></color>");
+                sb.Append("<color=#851417><i>").Append(Idioma.T(
+                    "Na manga do casaco, uma mancha escura. Na última página do caderno, na letra dele, uma única pergunta: \"fui eu?\"",
+                    "On his coat sleeve, a dark stain. On the last page of the notebook, in his handwriting, a single question: \"was it me?\"")).Append("</i></color>");
             finalCorpo.text = sb.ToString();
         }
 
@@ -536,19 +551,20 @@ namespace Vigilia
             vinheta.rectTransform.localScale = new Vector3(esc, esc, 1);
             olheiraElias.color = new Color(1, 1, 1, Mathf.Clamp01(nivel * 1.2f));
 
-            hudLucido.text = J.caderno != null && J.caderno.Lucido ? $"lúcido · {Mathf.CeilToInt(J.caderno.LucidoRestante)}s" : "";
+            hudLucido.text = J.caderno != null && J.caderno.Lucido ? Idioma.T("lúcido", "lucid") + $" · {Mathf.CeilToInt(J.caderno.LucidoRestante)}s" : "";
 
-            hudBateria.text = $"Lanterna {Mathf.CeilToInt(w.bateria)}%" + (J.lanterna != null && !J.lanterna.Acesa ? "  (desligada)" : "");
+            hudBateria.text = Idioma.T("Lanterna", "Flashlight") + $" {Mathf.CeilToInt(w.bateria)}%" + (J.lanterna != null && !J.lanterna.Acesa ? Idioma.T("  (desligada)", "  (off)") : "");
             barraBateria.rectTransform.anchorMax = new Vector2(w.bateria / 100f, 1);
             barraBateria.color = w.bateria < cfg.bateriaFraca ? UIFabrica.Sangue : new Color(0.95f, 0.85f, 0.5f);
 
             var sb = new StringBuilder();
-            if (w.temCobertor) sb.Append("Cobertor   ");
-            if (w.temChave) sb.Append("Chave   ");
-            if (w.temPeDeCabra) sb.Append("Pé de cabra   ");
-            if (w.sedativos > 0) sb.Append($"Sedativo ×{w.sedativos}   ");
-            if (w.objetosPesados > 0) sb.Append($"Objeto pesado ×{w.objetosPesados}   ");
-            sb.Append($"\nEvidências: {w.evidenciasColetadas.Count} ({w.evidenciasAnotadas.Count} anotadas)");
+            if (w.temCobertor) sb.Append(Idioma.T("Cobertor   ", "Blanket   "));
+            if (w.temChave) sb.Append(Idioma.T("Chave   ", "Key   "));
+            if (w.temPeDeCabra) sb.Append(Idioma.T("Pé de cabra   ", "Crowbar   "));
+            if (w.sedativos > 0) sb.Append(Idioma.T("Sedativo", "Sedative") + $" ×{w.sedativos}   ");
+            if (w.objetosPesados > 0) sb.Append(Idioma.T("Objeto pesado", "Heavy object") + $" ×{w.objetosPesados}   ");
+            sb.Append(Idioma.T($"\nEvidências: {w.evidenciasColetadas.Count} ({w.evidenciasAnotadas.Count} anotadas)",
+                               $"\nEvidence: {w.evidenciasColetadas.Count} ({w.evidenciasAnotadas.Count} written down)"));
             hudInventario.text = sb.ToString();
 
             grupoPossessao.SetActive(cfg.mostrarBarraPossessao || debugAtivo);
