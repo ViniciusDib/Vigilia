@@ -25,3 +25,9 @@
 |D-19|Entrega em 11/11/2026 às 23:50. Marco intermediário: protótipo de 2 noites em 29/10/2026.|
 |D-20|A lanterna tem bateria.|
 |D-21|Elias pode atacar com itens encontrados no mapa. Matar é permanente (matouAlguem). Como funciona o ataque está em aberto (Q-04).|
+|D-22|(24/10) Câmera vista de cima; personagens giram para onde olham. Cenas fixas só para o encontro com o monstro.|
+|D-23|(04/11) O monstro aparece só na sala secreta, na noite 3. Transbordar não mostra o monstro.|
+|D-24|(04/11) Noite 3 é uma fuga: sem dormir; a porta secreta se abre; depois do monstro, Elias foge pela porta principal. Sair dá A ou B; transbordar dá C. Substitui “dormir na noite 3” em D-15/D-16.|
+|D-25|(04/11) Mais possuídos: 2/6/8 por noite, mais 4 extras na fuga.|
+|D-26|(09/11) O jogo tem versão em português e em inglês, com troca no menu principal.|
+|D-27|(10/11) A sala secreta guarda os registros da ala de vigília; a última ficha é a de Elias (resolve Q-01 e Q-02 no escopo do jogo).|

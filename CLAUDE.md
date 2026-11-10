@@ -1,11 +1,11 @@
 # VIGÍLIA — instruções para o Claude Code
 
-Jogo 2D de suspense em **Unity 2D (URP + Light 2D), build WebGL no itch.io**. Projeto da disciplina Jogos Digitais (Insper 2026.1), grupo de 4 pessoas. Elias Vaughn, jornalista, passa 3 dias e 3 noites num sanatório no Alasca: **quem não dorme é possuído**. À noite os possuídos andam até ele e só param sob a luz da lanterna; ele precisa chegar à cama antes que `possessao` chegue a 100.
+Jogo 2D de suspense em **Unity 2D (URP + Light 2D), build WebGL no itch.io**. Projeto da disciplina Jogos Digitais (Insper 2026.2), grupo de 4 pessoas. Elias Vaughn, jornalista, passa 3 dias e 3 noites num sanatório no Alasca: **quem não dorme é possuído**. À noite os possuídos andam até ele e só param sob a luz da lanterna; ele precisa chegar à cama antes que `possessao` chegue a 100.
 
 ## Fonte da verdade
 
-1. `Vigilia_GDD_tecnico_v0.1.pdf` (v0.1, 22/10/2026) é a fonte oficial.
-2. `docs/gdd/*.md` é a conversão fiel do PDF, uma seção por arquivo (as figuras viraram Mermaid). Se algo divergir, vale o PDF; e dentro do PDF, **vale a tabela, não o diagrama** (avisar o Enzo do erro).
+1. `docs/gdd/*.md` (**v0.2, 10/11/2026**) é a fonte oficial: começou como conversão do PDF v0.1 e foi atualizada com as mudanças do desenvolvimento (tabela "O que mudou" em `00-capa-e-status.md`). `docs/GDD_completo.md` é a junção das seções; regenere depois de editar uma seção.
+2. `Vigilia_GDD_tecnico_v0.1.pdf` (22/10/2026) é a versão original; onde divergir da v0.2, vale a v0.2. Dentro de uma seção, **vale a tabela, não o diagrama**.
 3. `docs/vigilia.yaml` é o resumo compacto (Apêndice A). Use para consulta rápida.
 4. `docs/notas-de-consistencia.md` lista ambiguidades achadas na conversão e como tratá-las até o grupo decidir.
 

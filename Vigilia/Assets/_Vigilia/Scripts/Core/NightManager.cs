@@ -468,12 +468,17 @@ namespace Vigilia
         {
             emSequencia = true;
             J.EmCena = true;
-            // TODO(Q-01, Q-02): o que existe na sala secreta e o que se descobre sobre o diretor.
+            // Q-01/Q-02 resolvidos pelo grupo em 10/11: a sala guarda os registros da ala de vigília,
+            // e a última ficha é a de Elias (mantém a ambiguidade investigador/interno, GDD 12).
             yield return J.ui.Documento(Idioma.T("Sala secreta", "Secret room"), Idioma.T(
                 "Prontuários com o carimbo do Dr. Holt. Um gráfico de horas de sono por interno, noite após noite.\n" +
-                "Na última ficha, a letra é a sua.\n\n[TODO(Q-02): conteúdo final da sala secreta]",
+                "Na última ficha, a letra é a sua.\n\n" +
+                "VAUGHN, E. · leito 7 · internação: rasurada.\n" +
+                "Anotação do Dr. Holt: \"Acredita ser jornalista. Deixar que escreva. Escrever o acalma.\"",
                 "Patient files stamped by Dr. Holt. A chart of hours slept per patient, night after night.\n" +
-                "On the last file, the handwriting is yours.\n\n[TODO(Q-02): final content of the secret room]"));
+                "On the last file, the handwriting is yours.\n\n" +
+                "VAUGHN, E. · bed 7 · admitted: scratched out.\n" +
+                "Note by Dr. Holt: \"Believes he is a journalist. Let him write. Writing calms him.\""));
             J.EmCena = false;
             emSequencia = false;
         }

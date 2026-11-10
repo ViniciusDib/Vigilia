@@ -59,8 +59,8 @@ namespace Vigilia
                 "Staff photograph, 1962.\n\nMarta. Otis. Dr. Holt.\nThe same faces as today. No one has aged.",
             ["Diário do zelador.\n\n\"Aquecimento desligado às 23h por ordem da direção. De novo.\nO doutor diz que o frio ajuda a manter eles acordados.\""] =
                 "Caretaker's log.\n\n\"Heating shut off at 11 p.m. by order of the director. Again.\nThe doctor says the cold helps keep them awake.\"",
-            ["[TODO(Q-02): o que existe na sala secreta]\n\nGráficos de horas de sono por interno. Nomes riscados. O último nome não está riscado."] =
-                "[TODO(Q-02): what is in the secret room]\n\nCharts of hours slept per patient. Names crossed out. The last name is not crossed out.",
+            ["Registros da ala de vigília.\n\nGráficos de horas de sono por interno, noite após noite. Nomes riscados, um por um.\nO último nome não está riscado. É o seu."] =
+                "Vigil ward records.\n\nCharts of hours slept per patient, night after night. Names crossed out, one by one.\nThe last name is not crossed out. It's yours.",
 
             // ---------------------------------------------------------------- esconderijos
             ["embaixo da cama"] = "under the bed",

@@ -18,8 +18,8 @@ stateDiagram-v2
   NOITE2 --> DIA3 : M-07 OnDormiu
   DIA3 --> NOITE3 : M-08 o dia termina
   NOITE3 --> FINAL_C : M-09 OnTransbordou
-  NOITE3 --> FINAL_B : M-10 OnDormiu e matouAlguem
-  NOITE3 --> FINAL_A : M-11 OnDormiu e nao matouAlguem
+  NOITE3 --> FINAL_B : M-10 Escapou e matouAlguem
+  NOITE3 --> FINAL_A : M-11 Escapou e nao matouAlguem
   FINAL_A --> [*]
   FINAL_B --> [*]
   FINAL_C --> [*]
@@ -40,8 +40,8 @@ _Figura 6 · Máquina macro. Dias são hubs; noites são a ação; transbordar n
 |M-07|NOITE 2|DIA 3|OnDormiu|possessao × fatorSono; NpcMemory.Limpar(); noiteAtual = 3|
 |M-08|DIA 3|NOITE 3|o dia termina|capturar SaveSnapshot|
 |M-09|NOITE 3|FINAL C|OnTransbordou|transbordouNoite3 = verdadeiro; EndingResolver|
-|M-10|NOITE 3|FINAL B|OnDormiu e matouAlguem = verdadeiro|EndingResolver|
-|M-11|NOITE 3|FINAL A|OnDormiu e matouAlguem = falso|EndingResolver|
+|M-10|NOITE 3|FINAL B|Escapou (saiu pela porta principal na fuga, v0.2) e matouAlguem = verdadeiro|EndingResolver|
+|M-11|NOITE 3|FINAL A|Escapou (saiu pela porta principal na fuga, v0.2) e matouAlguem = falso|EndingResolver|
 
 ### 9.2 Jogador dentro de uma noite
 

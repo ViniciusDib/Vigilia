@@ -13,7 +13,7 @@ flowchart LR
   a3(["Dia 3 / noite 3:<br/>seguir a pista do diretor"]) --> f3["viuSalaSecreta"] --> o3["bloco de texto: 'sem provas'<br/>(se falso)"]
   a4(["Noite 2: abrir a porta<br/>com chave ou pé de cabra"]) --> f4["arrombouPorta"] --> o4["bloco de texto: porta arrombada"]
   a5(["Matar um possuído<br/>ou poupar"]) --> f5["matouAlguem"] --> o5["bloco de texto: violência"]
-  a6(["Noite 3: chegar à cama<br/>antes de transbordar"]) --> f6["transbordouNoite3"]
+  a6(["Noite 3: fugir pela porta principal<br/>antes de transbordar"]) --> f6["transbordouNoite3"]
   f5 -- "A ou B; em C muda a variação" --> FIN{{"DEFINE O FINAL<br/>A (honesta), B (omite) ou C (o louco)"}}
   f6 -- "verdadeiro = C" --> FIN
   classDef acao fill:#d6e8f7,stroke:#3a7ab8,color:#000
@@ -78,4 +78,4 @@ Modificadores (não mudam o final, só acrescentam blocos de texto à matéria):
 |Noite 1|Achar o cobertor|temCobertor = verdadeiro; o quarto fica quente; passa a ser possível dormir (P-05)|Nenhum direto|
 |Noite 2|Abrir a porta com chave ou pé de cabra|Chave: gasta tempo. Pé de cabra: rápido, +10 em possessao, arrombouPorta = verdadeiro|Só texto: bloco “porta arrombada”|
 |Dia 3 e noite 3|Seguir a pista do diretor até a sala secreta|viuSalaSecreta = verdadeiro|Só texto: sem esta flag a matéria sai “sem provas”|
-|Noite 3|Chegar à cama antes de transbordar|Dormir leva a A ou B. Transbordar leva a C (a noite 3 não repete)|Decide A ou B versus C|
+|Noite 3|Entrar na sala secreta, encontrar o monstro e fugir pela porta principal antes de transbordar (v0.2)|Sair leva a A ou B. Transbordar leva a C (a noite 3 não repete)|Decide A ou B versus C|

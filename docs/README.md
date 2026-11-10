@@ -1,6 +1,6 @@
 # Documentação do VIGÍLIA
 
-Conversão do `Vigilia_GDD_tecnico_v0.1.pdf` para Markdown, para o grupo e para o Claude Code. Se algo divergir do PDF, vale o PDF.
+GDD do VIGÍLIA em Markdown, para o grupo e para o Claude Code. Começou como conversão do `Vigilia_GDD_tecnico_v0.1.pdf`; a **v0.2 (10/11/2026)** foi atualizada aqui com as mudanças do desenvolvimento e descreve o jogo entregue (tabela "O que mudou" em [00-capa-e-status.md](gdd/00-capa-e-status.md)). Onde divergir do PDF, vale a v0.2.
 
 ## Arquivos
 
@@ -12,6 +12,7 @@ Conversão do `Vigilia_GDD_tecnico_v0.1.pdf` para Markdown, para o grupo e para 
 | [prompts-arte.md](prompts-arte.md) | Prompts para gerar a arte final numa IA e como colocar no jogo (ArteBruta → Processar → Construir tudo). |
 | [implementacao.md](implementacao.md) | O que já está implementado no Unity, onde, e as escolhas provisórias para revisar. |
 | [arte-e-referencias.md](arte-e-referencias.md) | O que há na pasta `Refs/` e como se liga ao GDD. |
+| [itch.md](itch.md) | Texto da página do itch.io (português e inglês), configuração e capturas em [itch/](itch/). |
 | [../CLAUDE.md](../CLAUDE.md) | Regras que o Claude Code segue em toda sessão. |
 
 ## GDD por seção ([gdd/](gdd/))

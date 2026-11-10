@@ -38,8 +38,8 @@ _Figura 4 · Teste de iluminação: só o inimigo A passa nos quatro testes e co
 
 ### 7.2 Bateria
 
-A lanterna tem bateria **DECIDIDO**. Ela cai enquanto a lanterna está ligada. Com 0, a luz apaga e os inimigos não param mais. Pilhas encontradas no mapa recarregam. Regra anti dead end **PROPOSTA**: sempre existe ao menos uma pilha alcançável em cada noite. Valores (consumo por segundo, recarga por pilha, quantas pilhas por noite) são **TESTE** e estão em BalanceConfig.
+A lanterna tem bateria **DECIDIDO**. Ela cai enquanto a lanterna está ligada. Com 0, a luz apaga e os inimigos não param mais. Pilhas encontradas no mapa recarregam. Regra anti dead end **PROPOSTA**: sempre existe ao menos uma pilha alcançável em cada noite. Valores (consumo por segundo, recarga por pilha, quantas pilhas por noite) são **TESTE** e estão em BalanceConfig. Na v0.2 o consumo subiu para 0.7 por segundo (a bateria cheia dura cerca de 2 min 20 s de luz contínua), para a luz ser um recurso a administrar.
 
 ### 7.3 Ataque
 
-Elias pode atacar com itens encontrados no mapa **DECIDIDO** (decisão D-21), e matar tem consequência permanente: `matouAlguem`. **Como** o ataque funciona está **ABERTO** (Q-04). Sugestão inicial para o grupo avaliar: um item que atordoa por alguns segundos (sedativo) e, sobre um inimigo congelado ou atordoado, um golpe letal opcional com objeto pesado; poucas unidades por noite, para a luz continuar sendo a defesa principal e o ataque ser uma escolha moral (a base dos finais B e C).
+Elias pode atacar com itens encontrados no mapa **DECIDIDO** (decisão D-21), e matar tem consequência permanente: `matouAlguem`. **Como** o ataque funciona está **ABERTO** (Q-04). Implementado (v0.2): o **sedativo** (tecla Q) atordoa um possuído congelado na luz, bem perto; sobre um possuído atordoado, a **chave inglesa** (tecla R, duas vezes, com confirmação) dá o golpe letal. Um de cada por noite, para a luz continuar sendo a defesa principal e o ataque ser uma escolha moral (a base dos finais B e C).

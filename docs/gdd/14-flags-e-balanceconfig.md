@@ -37,8 +37,12 @@
 |raioDeteccao, raioPerseguicao|unidades|6, 8|quando o inimigo percebe e persegue Elias|
 |velocidadePatrulha, velocidadePerseguicao|unidades por segundo|1.5, 2.2|multiplicadas pela velocidade da noite (× 0.8, 1.0, 1.2)|
 |alcanceLanterna, meiaAberturaGraus|unidades, graus|8, 28|cone da lanterna|
-|consumoBateria, recargaPilha|por segundo, pontos|0.4, 40|bateria 100 dura cerca de 4 minutos de luz contínua|
+|consumoBateria, recargaPilha|por segundo, pontos|0.7, 40|bateria 100 dura cerca de 2 min 20 s de luz contínua (v0.2; era 0.4)|
 |tempoAtordoado|segundos|8|duração do atordoamento (Q-04)|
-|inimigosPorNoite, esconderijosPorNoite, pilhasPorNoite|int ×3|2/4/6, 5/4/3, 4/3/2|alavancas de dificuldade (seção 10)|
+|inimigosPorNoite, esconderijosPorNoite, pilhasPorNoite|int ×3|2/6/8, 5/4/3, 4/3/2|alavancas de dificuldade (seção 10; inimigos eram 2/4/6)|
+|noite3Fuga, fugaInimigosExtras, fugaDistanciaMinimaExtras|bool, int, unidades|verdadeiro, 4, 12|fuga da noite 3 (seção 10.1, v0.2)|
+|fugaMultVelocidade, fugaMultRaio, fugaMultPossessao|float|1.1, 1.5, 1.2|o quanto a fuga é mais difícil (v0.2)|
+|duracaoEncontro|segundos|5.5|duração da cena fixa do monstro|
+|volumeMusica, volumePassos|0 a 1|0.6, 0.45|mixagem (v0.2)|
 
 Todos estes números são **TESTE** (Q-08): servem para a primeira jogada e serão calibrados no protótipo. Alvo sugerido **ABERTO** (Q-09): cada noite com 6 a 8 minutos.

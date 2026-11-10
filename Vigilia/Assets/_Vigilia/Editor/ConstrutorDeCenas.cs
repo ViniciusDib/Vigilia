@@ -483,7 +483,7 @@ namespace Vigilia.EditorTools
             Item(pai, "diario_manutencao", TipoItem.Evidencia, "diário de manutenção", "item_papel", new Vector2(-16.5f, -3.5f), Sempre, Sempre,
                 doc: "Diário do zelador.\n\n\"Aquecimento desligado às 23h por ordem da direção. De novo.\nO doutor diz que o frio ajuda a manter eles acordados.\"");
             Item(pai, "aparato", TipoItem.Evidencia, "registros da ala de vigília", "item_papel", new Vector2(-0.5f, -15f), Sempre, Sempre,
-                doc: "[TODO(Q-02): o que existe na sala secreta]\n\nGráficos de horas de sono por interno. Nomes riscados. O último nome não está riscado.");
+                doc: "Registros da ala de vigília.\n\nGráficos de horas de sono por interno, noite após noite. Nomes riscados, um por um.\nO último nome não está riscado. É o seu.");
 
             // Itens de ataque (Q-04): um de cada por noite
             Item(pai, "sedativo", TipoItem.Sedativo, "sedativo", "item_sedativo", new Vector2(-19f, 3.5f), Nunca, Sempre, porNoite: true);

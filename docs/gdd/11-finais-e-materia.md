@@ -6,8 +6,8 @@ O jogo termina com Elias escrevendo (ou não) a matéria. O final é escolhido p
 
 |**Final**|**Gatilho**|**Tom da matéria**|
 |---|---|---|
-|A · honesta|dormiu na noite 3, matouAlguem = falso|Elias escreve que foi uma experiência ruim, relata o que viu.|
-|B · omite|dormiu na noite 3, matouAlguem = verdadeiro|Elias matou alguém, mas suaviza o relato (“não é tão ruim assim”) para a polícia não ir atrás.|
+|A · honesta|fugiu pela porta principal na noite 3 (v0.2), matouAlguem = falso|Elias escreve que foi uma experiência ruim, relata o que viu.|
+|B · omite|fugiu pela porta principal na noite 3 (v0.2), matouAlguem = verdadeiro|Elias matou alguém, mas suaviza o relato (“não é tão ruim assim”) para a polícia não ir atrás.|
 |C · o louco|transbordou na noite 3|Elias nunca fez a matéria: ficou no sanatório. Quem escreve é outro: “Jornalista encontrado vagando, sem lembrar o próprio nome”. Variação 2: sangue na manga (“fui eu?”).|
 
 ### 11.1 Eixos e blocos de texto (P-08)

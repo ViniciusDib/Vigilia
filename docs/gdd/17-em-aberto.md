@@ -6,8 +6,8 @@ Cada linha precisa de um responsável e de uma data. Coluna “Quando” refere-
 
 |**ID**|**Questão**|**Rubricas**|**Sugestão inicial**|**Quando**|**Responsável**|
 |---|---|---|---|---|---|
-|Q-01|História do diretor: motivo, método e origem do espírito.|1, 5|O diretor causa as possessões de propósito; a sala secreta guarda o aparato que prova isso.|S2||
-|Q-02|Sala secreta: o que há, onde fica, como se acessa, o que se descobre.|1, 6|No subsolo, perto da caldeira (liga com Q-17).|S2||
+|Q-01|História do diretor: motivo, método e origem do espírito.|1, 5|**Resolvido (D-27):** o diretor mantém os internos acordados de propósito e registra tudo; a origem do espírito fica sem explicação, de propósito.|S2||
+|Q-02|Sala secreta: o que há, onde fica, como se acessa, o que se descobre.|1, 6|**Resolvido (D-23, D-27):** atrás do arquivo do subsolo; abre sozinha na noite 3; guarda os registros da ala de vigília e o monstro.|S2||
 |Q-03|Textos: intro (5 quadros), diálogos, notas, pistas, blocos da matéria.|1, 5|Dividir por pessoa: intro e diálogos; pistas; matéria.|S2 e S3||
 |Q-04|Ataque: itens, quantidade, como mata, regras.|2, 10|Sedativo (atordoa) e golpe letal opcional com objeto pesado, em poucas unidades.|S1 (mínimo) e S2||
 |Q-05|Evidências: tipos (documentos, fotos, gravações), quantas, onde, se há câmera.|2, 6|Documentos e fotos; a câmera poderia competir com a lanterna.|S2||
@@ -22,7 +22,7 @@ Cada linha precisa de um responsável e de uma data. Coluna “Quando” refere-
 |Q-14|Rubricas de peso 2 e as 2 desconsideradas (validar com o professor).|todas|Hipótese: Engajamento e Imersão, e Efeitos Visuais.|já||
 |Q-15|Tema sensível da noite 3 (ideação): validar com o professor.|1|Tratar de forma sugerida, sem mostrar o ato.|já||
 |Q-16|Divisão de tarefas: arte, código, som, roteiro e level design; quem atualiza o GDD no Milanote.|12|Dividir por rubrica para cobrir todas.|S1||
-|Q-17|O que força Elias a sair do quarto na noite 3.|6|A caldeira falha, o quarto esfria, religar no subsolo.|S2||
+|Q-17|O que força Elias a sair do quarto na noite 3.|6|**Resolvido (D-24):** Elias não consegue dormir; a porta do subsolo se abre e chama.|S2||
 |Q-18|Como o dia termina e o que há para fazer além de conversar.|6|Fim do dia por ação do jogador; objetivos de dia ligados às pistas.|S1||
 |Q-19|Falas “Quem?” para cada NPC que pode morrer.|1, 9|Uma fala por NPC e por fato.|S2||
 |Q-20|Tela de transbordo: mensagem e feedback antes de repetir a noite; tela de game over do final C.|3, 11|Escurecer, som, texto curto, voltar ao início da noite.|S1||

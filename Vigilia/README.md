@@ -1,7 +1,7 @@
 # VIGÍLIA
 
 Jogo 2D de suspense, visto de cima, em Unity (URP 2D, Light 2D), com build WebGL para o itch.io.
-Projeto 2D da disciplina Jogos Digitais, Insper 2026.1.
+Projeto 2D da disciplina Jogos Digitais, Insper 2026.2.
 Feito por **Vinicius Dib, Greta Faria, Enzo Christofoletti e Thomas Rudge**.
 Disponível em português e inglês (botão "Idioma / Language" no menu).
 
@@ -65,9 +65,9 @@ A disciplina exige crédito para todo asset e todo trecho de código de terceiro
 
 | O quê | Origem | Licença / observação |
 |---|---|---|
-| Cena do monstro (`Scripts/Encontro/EncontroMonstro.cs`) | Port para C# do design handoff "Asylum Monster Room" (`Refs/Horror asylum monster encounter.zip`), protótipo HTML com o renderizador procedural, paleta e parâmetros | Material de referência do grupo. **TODO: confirmar autoria e permissão de uso** |
-| Gerador mulberry32 e hash de ruído (dentro do mesmo arquivo) | Mesmo protótipo acima | idem |
-| Modelos de corpo inteiro (`ArteBruta/_corpo_inteiro/`) e o cobertor | Gerados com PixelLab (pixellab.ai); os modelos servem de referência | **TODO: conferir os termos do plano usado** |
+| Cena do monstro (`Scripts/Encontro/EncontroMonstro.cs`) | Port para C# do design handoff "Asylum Monster Room" (`Refs/Horror asylum monster encounter.zip`): protótipo HTML com o renderizador procedural, paleta e parâmetros, feito por Vinicius Dib (grupo) no Claude Design | do grupo |
+| Gerador mulberry32 e hash de ruído (dentro do mesmo arquivo) | Algoritmos de domínio público, vindos do mesmo protótipo acima | do grupo |
+| Modelos de corpo inteiro (`ArteBruta/_corpo_inteiro/`) e o cobertor | Gerados com PixelLab (pixellab.ai); os modelos servem de referência | Pelos [termos do PixelLab](https://www.pixellab.ai/termsofservice), quem gera é dono das imagens e pode usá-las em qualquer projeto, inclusive comercial, sem exigência de crédito (só é proibido treinar outros modelos com elas). Creditamos mesmo assim. |
 | Sprites vistos de cima, pisos das salas e parede (`topo_*`, `piso_*`, `parede`) | Gerados por código (`Ferramentas/gerar_arte_topo.py`) a partir das cores e roupas dos modelos acima | do grupo |
 | Retratos, menu, logo, quadros da intro, piso e parede (`ArteBruta/`) | Gerados com IA de imagem a partir de `docs/prompts-arte.md` | **TODO: nome da ferramenta e termos de uso** |
 | Móveis, objetos de cenário e itens (`cama`, `caldeira`, `maca`, `item_*`...) | Gerados por código (`Ferramentas/gerar_props.py`) | do grupo |
@@ -76,8 +76,8 @@ A disciplina exige crédito para todo asset e todo trecho de código de terceiro
 | Sons provisórios | Gerados por código (`Scripts/Audio/SomProcedural.cs`) | do grupo |
 | Fonte da interface | LegacyRuntime (embutida no Unity) | Unity |
 | Template do projeto | Unity 2D (URP) template 7.0.0 | Unity |
-| Código do jogo | Escrito com auxílio do Claude Code (Anthropic) a partir do GDD do grupo | — |
+| Código do jogo | Escrito pelo grupo com auxílio do Claude Code (Anthropic), a partir do GDD do grupo. Nenhum trecho copiado de terceiros ou de colegas | — |
 
 Grupo: Vinicius Dib, Greta Faria, Enzo Christofoletti e Thomas Rudge.
 
-TODO: assets finais (arte, sons, trilha) com as respectivas licenças.
+Nenhum asset de loja ou de terceiros foi usado: toda a arte, música e som vêm das ferramentas acima ou de scripts do grupo.

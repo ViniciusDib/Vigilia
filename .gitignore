@@ -4,3 +4,5 @@ Thumbs.db
 desktop.ini
 # Configs locais do Claude Code
 .claude/settings.local.json
+# Enunciado da disciplina (fica só local)
+Projeto_2D-*.md

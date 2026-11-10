@@ -2,7 +2,7 @@
 
 ## 2. Resumo do jogo
 
-**VIGÍLIA** é um jogo 2D de suspense em Unity (build WebGL, publicado no itch.io). Elias Vaughn, jornalista, passa um fim de semana (3 dias e 3 noites) em um sanatório isolado no Alasca para investigar relatos de que internos e funcionários “esquecem” tudo a cada amanhecer. Ele descobre a regra por trás disso: **quem não dorme é possuído**. À noite, os possuídos andam até ele e só param enquanto a luz da lanterna os ilumina. Elias precisa chegar à cama e dormir antes que a possessão atinja o limite. No fim ele escreve a matéria, e o que escreve depende do que fez.
+**VIGÍLIA** é um jogo 2D de suspense, visto de cima, em Unity (build WebGL, publicado no itch.io, em português e inglês). Elias Vaughn, jornalista, passa um fim de semana (3 dias e 3 noites) em um sanatório isolado no Alasca para investigar relatos de que internos e funcionários “esquecem” tudo a cada amanhecer. Ele descobre a regra por trás disso: **quem não dorme é possuído**. À noite, os possuídos andam até ele e só param enquanto a luz da lanterna os ilumina. Elias precisa chegar à cama e dormir antes que a possessão atinja o limite. Na terceira noite não há sono: uma porta se abre no subsolo, algo espera lá dentro, e Elias precisa fugir do sanatório. No fim ele escreve a matéria, e o que escreve depende do que fez.
 
 ### 2.1 Pilares
 
@@ -25,3 +25,5 @@
 |Retratos de diálogo com olheiras|Multiplayer |
 |Checkpoint por noite e reset das 06:00|Árvore de diálogo ramificada com dezenas de falas|
 |3 finais com matéria montada por blocos de texto||
+|Fuga da noite 3, com o monstro na sala secreta (v0.2)||
+|Português e inglês, com troca no menu (v0.2)||

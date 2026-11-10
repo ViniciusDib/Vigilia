@@ -1,19 +1,33 @@
-<!-- Fonte: Vigilia_GDD_tecnico_v0.1.pdf (v0.1, 22/10/2026). Convertido para Markdown; se divergir do PDF, vale o PDF. -->
+<!-- v0.2 (10/11/2026): atualizado em Markdown a partir do PDF v0.1 com as mudanças que o grupo decidiu durante o desenvolvimento. Descreve o jogo entregue. -->
 
-# VIGÍLIA · GDD técnico v0.1
+# VIGÍLIA · GDD técnico v0.2
 
 ## Documento de design e guia de implementação
 
-título provisório da proposta P-12 · jogo 2D de suspense em Unity (WebGL) · Projeto 2D, Jogos Digitais, Insper 2026.1
+jogo 2D de suspense em Unity (WebGL) · Projeto 2D, Jogos Digitais, Insper 2026.2
 
 |**Campo**|**Valor**|
 |---|---|
-|Disciplina|Jogos Digitais · Jogos e Interação · 2026.1 · Insper (Prof. Tiago Sanches, Tec. Pedro Emil, Prof. Gustavo Braga)|
+|Disciplina|Jogos Digitais · Jogos e Interação · 2026.2 · Insper (Prof. Luciano Soares, Tec. Pedro Emil, Prof. Gustavo Braga)|
+|Grupo|Vinicius Dib, Greta Faria, Enzo Christofoletti e Thomas Rudge|
 |Tipo|Projeto 2D, multi developer, grupo de 4 pessoas|
-|Entrega|11/11/2026 às 23:50: build WebGL no itch.io (jam da disciplina), repositório GitHub (com créditos no README), GDD no Milanote, e envio completo no Blackboard|
-|Versão deste documento|0.1 · 22/10/2026 · consolidado a partir da conversa de design entre Enzo e Claude|
+|Entrega|10/11/2026 às 23:50 (enunciado do Projeto 2D): build WebGL no itch.io (jam da disciplina), repositório GitHub (com créditos no README), GDD no Milanote, e envio completo no Blackboard|
+|Versão deste documento|0.2 · 10/11/2026 · atualizada com as mudanças feitas durante o desenvolvimento (tabela abaixo). A v0.1 (22/10/2026) foi consolidada a partir da conversa de design entre Enzo e Claude|
 |Para quem|Grupo (leitura humana) e Claude Code (leitura por IA). Os dois usam o mesmo texto: tabelas com identificadores fixos, status explícito em cada decisão|
 |Prazo do primeiro marco|Quinta, 29/10/2026: protótipo jogável de 2 noites, com paredes, salas diferentes e luz (seção 18)|
+
+#### O que mudou da v0.1 para a v0.2 (o jogo entregue)
+
+|**Data**|**Mudança**|**Seções**|
+|---|---|---|
+|24/10|Câmera vista de cima; Elias e os possuídos giram para onde olham. Cenas fixas só para o encontro com o monstro.|2, 5|
+|04/11|O monstro (cena fixa) aparece **só na sala secreta**, na noite 3. Transbordar não mostra mais o monstro.|5, 10|
+|04/11|**Noite 3 vira fuga:** não dá para dormir; a porta da sala secreta se abre sozinha; ao entrar, Elias encontra o monstro e precisa fugir pela porta principal, com luz de alarme e 4 possuídos extras, mais rápidos. Sair dá o final A ou B; transbordar na fuga dá o C. Resolve Q-02 e Q-17.|3, 9, 10, 11|
+|04/11|Mais possuídos: 2 / 6 / 8 por noite (antes 2 / 4 / 6).|10, 14|
+|04/11|Cada cômodo tem piso e móveis próprios, e o nome aparece na tela ao entrar. Música de fundo para dia, noite e fuga.|5|
+|09/11|Mais difícil: a bateria dura cerca de 2 min 20 s de luz contínua (antes 4 min). Música mais baixa, passos mais altos.|7, 14|
+|09/11|Jogo em **português e inglês**, com troca no menu principal.|2|
+|10/11|Sala secreta definida: guarda os registros da ala de vigília; a última ficha é a de Elias (Q-01 e Q-02).|5, 12, 17|
 
 #### Status usados em todo o documento
 
@@ -66,7 +80,7 @@ Este PDF reúne, em um lugar só, tudo o que foi decidido sobre o jogo e tudo o 
 
 ## 2. Resumo do jogo
 
-**VIGÍLIA** é um jogo 2D de suspense em Unity (build WebGL, publicado no itch.io). Elias Vaughn, jornalista, passa um fim de semana (3 dias e 3 noites) em um sanatório isolado no Alasca para investigar relatos de que internos e funcionários “esquecem” tudo a cada amanhecer. Ele descobre a regra por trás disso: **quem não dorme é possuído**. À noite, os possuídos andam até ele e só param enquanto a luz da lanterna os ilumina. Elias precisa chegar à cama e dormir antes que a possessão atinja o limite. No fim ele escreve a matéria, e o que escreve depende do que fez.
+**VIGÍLIA** é um jogo 2D de suspense, visto de cima, em Unity (build WebGL, publicado no itch.io, em português e inglês). Elias Vaughn, jornalista, passa um fim de semana (3 dias e 3 noites) em um sanatório isolado no Alasca para investigar relatos de que internos e funcionários “esquecem” tudo a cada amanhecer. Ele descobre a regra por trás disso: **quem não dorme é possuído**. À noite, os possuídos andam até ele e só param enquanto a luz da lanterna os ilumina. Elias precisa chegar à cama e dormir antes que a possessão atinja o limite. Na terceira noite não há sono: uma porta se abre no subsolo, algo espera lá dentro, e Elias precisa fugir do sanatório. No fim ele escreve a matéria, e o que escreve depende do que fez.
 
 ### 2.1 Pilares
 
@@ -89,6 +103,8 @@ Este PDF reúne, em um lugar só, tudo o que foi decidido sobre o jogo e tudo o 
 |Retratos de diálogo com olheiras|Multiplayer |
 |Checkpoint por noite e reset das 06:00|Árvore de diálogo ramificada com dezenas de falas|
 |3 finais com matéria montada por blocos de texto||
+|Fuga da noite 3, com o monstro na sala secreta (v0.2)||
+|Português e inglês, com troca no menu (v0.2)||
 
 ## 3. Árvore de decisão (consulta rápida)
 
@@ -103,7 +119,7 @@ flowchart LR
   a3(["Dia 3 / noite 3:<br/>seguir a pista do diretor"]) --> f3["viuSalaSecreta"] --> o3["bloco de texto: 'sem provas'<br/>(se falso)"]
   a4(["Noite 2: abrir a porta<br/>com chave ou pé de cabra"]) --> f4["arrombouPorta"] --> o4["bloco de texto: porta arrombada"]
   a5(["Matar um possuído<br/>ou poupar"]) --> f5["matouAlguem"] --> o5["bloco de texto: violência"]
-  a6(["Noite 3: chegar à cama<br/>antes de transbordar"]) --> f6["transbordouNoite3"]
+  a6(["Noite 3: fugir pela porta principal<br/>antes de transbordar"]) --> f6["transbordouNoite3"]
   f5 -- "A ou B; em C muda a variação" --> FIN{{"DEFINE O FINAL<br/>A (honesta), B (omite) ou C (o louco)"}}
   f6 -- "verdadeiro = C" --> FIN
   classDef acao fill:#d6e8f7,stroke:#3a7ab8,color:#000
@@ -168,7 +184,7 @@ Modificadores (não mudam o final, só acrescentam blocos de texto à matéria):
 |Noite 1|Achar o cobertor|temCobertor = verdadeiro; o quarto fica quente; passa a ser possível dormir (P-05)|Nenhum direto|
 |Noite 2|Abrir a porta com chave ou pé de cabra|Chave: gasta tempo. Pé de cabra: rápido, +10 em possessao, arrombouPorta = verdadeiro|Só texto: bloco “porta arrombada”|
 |Dia 3 e noite 3|Seguir a pista do diretor até a sala secreta|viuSalaSecreta = verdadeiro|Só texto: sem esta flag a matéria sai “sem provas”|
-|Noite 3|Chegar à cama antes de transbordar|Dormir leva a A ou B. Transbordar leva a C (a noite 3 não repete)|Decide A ou B versus C|
+|Noite 3|Entrar na sala secreta, encontrar o monstro e fugir pela porta principal antes de transbordar (v0.2)|Sair leva a A ou B. Transbordar leva a C (a noite 3 não repete)|Decide A ou B versus C|
 
 ## 4. Glossário e identificadores
 
@@ -201,11 +217,13 @@ Cada termo é definido uma vez e usado sempre igual, no texto, nas tabelas e no 
 
 ### 5.1 Ambientação
 
+O jogo é visto de cima **DECIDIDO** (24/10): Elias e os possuídos giram para onde olham, e cada cômodo tem piso, móveis e nome próprios. Cenas fixas só para o encontro com o monstro.
+
 Um sanatório isolado no interior do Alasca, em pleno inverno (nome provisório: **Sanatório St. Brenna**, P-11). No Alasca de inverno os dias são curtos e as noites longas, e é por isso que a maior parte do jogo acontece à noite. Há neve, vidro congelado, vapor da respiração e aquecimento precário. A estética é um “Outlast em 2D”: o espaço fica escuro e só é visto onde a lanterna toca. **DECIDIDO**
 
 **Regra de lore (DECIDIDO):** quem não dorme é possuído. Ao amanhecer, às 06:00, todos esquecem o que aconteceu durante a noite; só Elias lembra. Todos os retratos têm olheiras profundas, para o jogador ler o tema só de olhar. A regra é explicada na intro do jogo, que é obrigatória (a justiça dos finais depende de o jogador ter ouvido a regra).
 
-**Lore ainda em aberto:** origem do espírito, plano e motivo do diretor, o que existe na sala secreta (Q-01, Q-02).
+**Lore (v0.2):** atrás do arquivo do subsolo fica a sala secreta do Dr. Holt. Ela guarda os registros da ala de vigília: gráficos de horas de sono por interno, noite após noite, e nomes riscados um por um. O último nome não está riscado; é o de Elias, numa ficha com a letra dele e a anotação do diretor: “Acredita ser jornalista. Deixar que escreva. Escrever o acalma.” Na noite 3 a porta se abre sozinha e algo espera lá dentro: o monstro (cena fixa). A origem do espírito continua sem explicação, de propósito.
 
 ### 5.2 Elenco (nomes definidos nesta versão, P-11)
 
@@ -216,7 +234,8 @@ Um sanatório isolado no interior do Alasca, em pleno inverno (nome provisório:
 |Otis Brandt|Zelador|Simpático, dá dicas do prédio. Tem a oficina onde fica o pé de cabra.|Possuído: segue.|Inimigo tipo funcionário. O pé de cabra nunca depende dele estar vivo.|
 |Dr. Henrik Almeida|Médico|Evasivo. Guarda uma evidência importante.|Possuído.|Vítima possível. Se morrer, os outros negam que ele existiu.|
 |Sr. Wren|Paciente idoso|Calmo, murmura frases sem sentido.|Possuído: caçador mais rápido, reage a barulho.|Inimigo tipo paciente velho.|
-|Dr. Alaric Holt|Diretor do sanatório|Cordial e paternal.|Revelado como origem das possessões na noite 3.|Vilão (lore em aberto, Q-01).|
+|Dr. Alaric Holt|Diretor do sanatório|Cordial e paternal.|Não aparece; na noite 3 a sala secreta dele revela os registros da ala de vigília.|Vilão. Mantém os internos acordados de propósito (frio, plantões).|
+|O monstro|O que espera na sala secreta|—|Aparece uma vez, na noite 3, em cena fixa; depois dele, a fuga.|Clímax do jogo (v0.2).|
 |Pacientes figurantes|Variações de sprite|Rotina nos corredores.|Possuídos.|Enchem o mapa sem custo de retrato.|
 
 ### 5.3 Retratos de diálogo
@@ -348,11 +367,11 @@ _Figura 4 · Teste de iluminação: só o inimigo A passa nos quatro testes e co
 
 ### 7.2 Bateria
 
-A lanterna tem bateria **DECIDIDO**. Ela cai enquanto a lanterna está ligada. Com 0, a luz apaga e os inimigos não param mais. Pilhas encontradas no mapa recarregam. Regra anti dead end **PROPOSTA**: sempre existe ao menos uma pilha alcançável em cada noite. Valores (consumo por segundo, recarga por pilha, quantas pilhas por noite) são **TESTE** e estão em BalanceConfig.
+A lanterna tem bateria **DECIDIDO**. Ela cai enquanto a lanterna está ligada. Com 0, a luz apaga e os inimigos não param mais. Pilhas encontradas no mapa recarregam. Regra anti dead end **PROPOSTA**: sempre existe ao menos uma pilha alcançável em cada noite. Valores (consumo por segundo, recarga por pilha, quantas pilhas por noite) são **TESTE** e estão em BalanceConfig. Na v0.2 o consumo subiu para 0.7 por segundo (a bateria cheia dura cerca de 2 min 20 s de luz contínua), para a luz ser um recurso a administrar.
 
 ### 7.3 Ataque
 
-Elias pode atacar com itens encontrados no mapa **DECIDIDO** (decisão D-21), e matar tem consequência permanente: `matouAlguem`. **Como** o ataque funciona está **ABERTO** (Q-04). Sugestão inicial para o grupo avaliar: um item que atordoa por alguns segundos (sedativo) e, sobre um inimigo congelado ou atordoado, um golpe letal opcional com objeto pesado; poucas unidades por noite, para a luz continuar sendo a defesa principal e o ataque ser uma escolha moral (a base dos finais B e C).
+Elias pode atacar com itens encontrados no mapa **DECIDIDO** (decisão D-21), e matar tem consequência permanente: `matouAlguem`. **Como** o ataque funciona está **ABERTO** (Q-04). Implementado (v0.2): o **sedativo** (tecla Q) atordoa um possuído congelado na luz, bem perto; sobre um possuído atordoado, a **chave inglesa** (tecla R, duas vezes, com confirmação) dá o golpe letal. Um de cada por noite, para a luz continuar sendo a defesa principal e o ataque ser uma escolha moral (a base dos finais B e C).
 
 ## 8. Dia, noite e memória
 
@@ -418,8 +437,8 @@ stateDiagram-v2
   NOITE2 --> DIA3 : M-07 OnDormiu
   DIA3 --> NOITE3 : M-08 o dia termina
   NOITE3 --> FINAL_C : M-09 OnTransbordou
-  NOITE3 --> FINAL_B : M-10 OnDormiu e matouAlguem
-  NOITE3 --> FINAL_A : M-11 OnDormiu e nao matouAlguem
+  NOITE3 --> FINAL_B : M-10 Escapou e matouAlguem
+  NOITE3 --> FINAL_A : M-11 Escapou e nao matouAlguem
   FINAL_A --> [*]
   FINAL_B --> [*]
   FINAL_C --> [*]
@@ -440,8 +459,8 @@ _Figura 6 · Máquina macro. Dias são hubs; noites são a ação; transbordar n
 |M-07|NOITE 2|DIA 3|OnDormiu|possessao × fatorSono; NpcMemory.Limpar(); noiteAtual = 3|
 |M-08|DIA 3|NOITE 3|o dia termina|capturar SaveSnapshot|
 |M-09|NOITE 3|FINAL C|OnTransbordou|transbordouNoite3 = verdadeiro; EndingResolver|
-|M-10|NOITE 3|FINAL B|OnDormiu e matouAlguem = verdadeiro|EndingResolver|
-|M-11|NOITE 3|FINAL A|OnDormiu e matouAlguem = falso|EndingResolver|
+|M-10|NOITE 3|FINAL B|Escapou (saiu pela porta principal na fuga, v0.2) e matouAlguem = verdadeiro|EndingResolver|
+|M-11|NOITE 3|FINAL A|Escapou (saiu pela porta principal na fuga, v0.2) e matouAlguem = falso|EndingResolver|
 
 ### 9.2 Jogador dentro de uma noite
 
@@ -545,19 +564,30 @@ A dificuldade sobe de uma noite para a outra por **alavancas concretas** (númer
 |**Aspecto**|**Noite 1**|**Noite 2**|**Noite 3**|
 |---|---|---|---|
 |Dificuldade|baixa; ensina as regras|média|alta|
-|Situação inicial|Quarto frio, sem cobertor. Elias não consegue dormir de frio e ouve um barulho (**DECIDIDO**)|Elias tenta dormir, ouve um barulho grande, sai atrás dele e fica trancado fora do quarto (**DECIDIDO**)|O dia 3 terminou com ou sem a pista do diretor|
-|Objetivo|Achar um cobertor, conhecer o elenco no caminho e voltar ao quarto|Entrar no quarto: chave ou pé de cabra. Os dois caminhos existem sempre (anti dead end)|Dormir antes de transbordar. Com a pista, ir à sala secreta do diretor (Q-02)|
-|Alívio da banheira|Quarto quente com o cobertor|Sala com aquecedor (caldeira) no meio do caminho|**ABERTO** (Q-17)|
-|O que ensina|Lanterna e congelar, esconder, bateria, escrever|Calor das salas e o dilema “vale arrombar?” (Q-06)|Tudo junto; revelação do diretor|
+|Situação inicial|Quarto frio, sem cobertor. Elias não consegue dormir de frio e ouve um barulho (**DECIDIDO**)|Elias tenta dormir, ouve um barulho grande, sai atrás dele e fica trancado fora do quarto (**DECIDIDO**)|Elias não consegue dormir. Do subsolo vem o rangido de uma porta se abrindo (v0.2)|
+|Objetivo|Achar um cobertor, conhecer o elenco no caminho e voltar ao quarto|Entrar no quarto: chave ou pé de cabra. Os dois caminhos existem sempre (anti dead end)|Ir até a sala secreta, encontrar o monstro e **fugir pela porta principal** (fim do corredor leste) antes de transbordar (v0.2)|
+|Alívio da banheira|Quarto quente com o cobertor|Sala com aquecedor (caldeira) no meio do caminho|Caldeira no caminho; não há cama (v0.2, resolve Q-17)|
+|O que ensina|Lanterna e congelar, esconder, bateria, escrever|Calor das salas e o dilema “vale arrombar?” (Q-06)|Tudo junto, sob pressão: a fuga|
 |Pistas do final C|Pista 1: Marta chama Elias pelo nome|Pista 2: nota na letra de Elias|Pista 3 (pulseira, P) e revelação|
-|Inimigos **TESTE**|2|4|6|
+|Inimigos **TESTE**|2|6 (v0.2)|8, mais 4 na fuga (v0.2)|
 |Velocidade **TESTE**|× 0.8|× 1.0|× 1.2|
 |Esconderijos **TESTE**|5|4|3|
 |Pilhas **TESTE**|4|3|2|
 |Salas quentes **TESTE**|2|2|1|
 |Se transbordar|restaura checkpoint e repete|restaura checkpoint e repete|não repete: Final C|
 
-### 10.1 Pontos delicados
+### 10.1 A fuga da noite 3 (v0.2)
+
+Na noite 3 a cama não serve: Elias não consegue dormir. A porta atrás do arquivo do subsolo se abre sozinha. Ao entrar na sala secreta, toca a cena fixa do monstro; depois dela começa a **fuga**:
+
+- a luz do prédio vira um alarme vermelho pulsando;
+- a porta principal, no fim do corredor leste, se destranca;
+- surgem 4 possuídos extras, sempre a pelo menos 12 unidades de Elias (dá tempo de reagir);
+- todos ficam 1,1× mais rápidos, enxergam 1,5× mais longe e a banheira enche 1,2× mais rápido.
+
+Sair pela porta principal leva ao final A ou B (conforme `matouAlguem`). Transbordar durante a fuga leva ao C. Os valores da fuga são **TESTE** e ficam em BalanceConfig (seção “Noite 3”); foram reduzidos duas vezes depois de playtests em que o final ficou difícil demais.
+
+### 10.2 Pontos delicados
 
 - **Dilema “vale arrombar?” (Q-06).** Para o dilema ter peso, os dois caminhos precisam ter custo. Chave: tempo (a possessão sobe) e encontros no caminho. Pé de cabra: rápido, mas faz barulho (+10 e atrai inimigos) e marca arrombouPorta. Consequências além do barulho estão em aberto.
 
@@ -571,8 +601,8 @@ O jogo termina com Elias escrevendo (ou não) a matéria. O final é escolhido p
 
 |**Final**|**Gatilho**|**Tom da matéria**|
 |---|---|---|
-|A · honesta|dormiu na noite 3, matouAlguem = falso|Elias escreve que foi uma experiência ruim, relata o que viu.|
-|B · omite|dormiu na noite 3, matouAlguem = verdadeiro|Elias matou alguém, mas suaviza o relato (“não é tão ruim assim”) para a polícia não ir atrás.|
+|A · honesta|fugiu pela porta principal na noite 3 (v0.2), matouAlguem = falso|Elias escreve que foi uma experiência ruim, relata o que viu.|
+|B · omite|fugiu pela porta principal na noite 3 (v0.2), matouAlguem = verdadeiro|Elias matou alguém, mas suaviza o relato (“não é tão ruim assim”) para a polícia não ir atrás.|
 |C · o louco|transbordou na noite 3|Elias nunca fez a matéria: ficou no sanatório. Quem escreve é outro: “Jornalista encontrado vagando, sem lembrar o próprio nome”. Variação 2: sangue na manga (“fui eu?”).|
 
 ### 11.1 Eixos e blocos de texto (P-08)
@@ -801,9 +831,13 @@ Cuidado clássico: copiar o estado por **referência** em vez de por valor faz o
 |raioDeteccao, raioPerseguicao|unidades|6, 8|quando o inimigo percebe e persegue Elias|
 |velocidadePatrulha, velocidadePerseguicao|unidades por segundo|1.5, 2.2|multiplicadas pela velocidade da noite (× 0.8, 1.0, 1.2)|
 |alcanceLanterna, meiaAberturaGraus|unidades, graus|8, 28|cone da lanterna|
-|consumoBateria, recargaPilha|por segundo, pontos|0.4, 40|bateria 100 dura cerca de 4 minutos de luz contínua|
+|consumoBateria, recargaPilha|por segundo, pontos|0.7, 40|bateria 100 dura cerca de 2 min 20 s de luz contínua (v0.2; era 0.4)|
 |tempoAtordoado|segundos|8|duração do atordoamento (Q-04)|
-|inimigosPorNoite, esconderijosPorNoite, pilhasPorNoite|int ×3|2/4/6, 5/4/3, 4/3/2|alavancas de dificuldade (seção 10)|
+|inimigosPorNoite, esconderijosPorNoite, pilhasPorNoite|int ×3|2/6/8, 5/4/3, 4/3/2|alavancas de dificuldade (seção 10; inimigos eram 2/4/6)|
+|noite3Fuga, fugaInimigosExtras, fugaDistanciaMinimaExtras|bool, int, unidades|verdadeiro, 4, 12|fuga da noite 3 (seção 10.1, v0.2)|
+|fugaMultVelocidade, fugaMultRaio, fugaMultPossessao|float|1.1, 1.5, 1.2|o quanto a fuga é mais difícil (v0.2)|
+|duracaoEncontro|segundos|5.5|duração da cena fixa do monstro|
+|volumeMusica, volumePassos|0 a 1|0.6, 0.45|mixagem (v0.2)|
 
 Todos estes números são **TESTE** (Q-08): servem para a primeira jogada e serão calibrados no protótipo. Alvo sugerido **ABERTO** (Q-09): cada noite com 6 a 8 minutos.
 
@@ -832,6 +866,12 @@ Todos estes números são **TESTE** (Q-08): servem para a primeira jogada e ser�
 |D-19|Entrega em 11/11/2026 às 23:50. Marco intermediário: protótipo de 2 noites em 29/10/2026.|
 |D-20|A lanterna tem bateria.|
 |D-21|Elias pode atacar com itens encontrados no mapa. Matar é permanente (matouAlguem). Como funciona o ataque está em aberto (Q-04).|
+|D-22|(24/10) Câmera vista de cima; personagens giram para onde olham. Cenas fixas só para o encontro com o monstro.|
+|D-23|(04/11) O monstro aparece só na sala secreta, na noite 3. Transbordar não mostra o monstro.|
+|D-24|(04/11) Noite 3 é uma fuga: sem dormir; a porta secreta se abre; depois do monstro, Elias foge pela porta principal. Sair dá A ou B; transbordar dá C. Substitui “dormir na noite 3” em D-15/D-16.|
+|D-25|(04/11) Mais possuídos: 2/6/8 por noite, mais 4 extras na fuga.|
+|D-26|(09/11) O jogo tem versão em português e em inglês, com troca no menu principal.|
+|D-27|(10/11) A sala secreta guarda os registros da ala de vigília; a última ficha é a de Elias (resolve Q-01 e Q-02 no escopo do jogo).|
 
 ## 16. Propostas a confirmar pelo grupo
 
@@ -860,8 +900,8 @@ Cada linha precisa de um responsável e de uma data. Coluna “Quando” refere-
 
 |**ID**|**Questão**|**Rubricas**|**Sugestão inicial**|**Quando**|**Responsável**|
 |---|---|---|---|---|---|
-|Q-01|História do diretor: motivo, método e origem do espírito.|1, 5|O diretor causa as possessões de propósito; a sala secreta guarda o aparato que prova isso.|S2||
-|Q-02|Sala secreta: o que há, onde fica, como se acessa, o que se descobre.|1, 6|No subsolo, perto da caldeira (liga com Q-17).|S2||
+|Q-01|História do diretor: motivo, método e origem do espírito.|1, 5|**Resolvido (D-27):** o diretor mantém os internos acordados de propósito e registra tudo; a origem do espírito fica sem explicação, de propósito.|S2||
+|Q-02|Sala secreta: o que há, onde fica, como se acessa, o que se descobre.|1, 6|**Resolvido (D-23, D-27):** atrás do arquivo do subsolo; abre sozinha na noite 3; guarda os registros da ala de vigília e o monstro.|S2||
 |Q-03|Textos: intro (5 quadros), diálogos, notas, pistas, blocos da matéria.|1, 5|Dividir por pessoa: intro e diálogos; pistas; matéria.|S2 e S3||
 |Q-04|Ataque: itens, quantidade, como mata, regras.|2, 10|Sedativo (atordoa) e golpe letal opcional com objeto pesado, em poucas unidades.|S1 (mínimo) e S2||
 |Q-05|Evidências: tipos (documentos, fotos, gravações), quantas, onde, se há câmera.|2, 6|Documentos e fotos; a câmera poderia competir com a lanterna.|S2||
@@ -876,7 +916,7 @@ Cada linha precisa de um responsável e de uma data. Coluna “Quando” refere-
 |Q-14|Rubricas de peso 2 e as 2 desconsideradas (validar com o professor).|todas|Hipótese: Engajamento e Imersão, e Efeitos Visuais.|já||
 |Q-15|Tema sensível da noite 3 (ideação): validar com o professor.|1|Tratar de forma sugerida, sem mostrar o ato.|já||
 |Q-16|Divisão de tarefas: arte, código, som, roteiro e level design; quem atualiza o GDD no Milanote.|12|Dividir por rubrica para cobrir todas.|S1||
-|Q-17|O que força Elias a sair do quarto na noite 3.|6|A caldeira falha, o quarto esfria, religar no subsolo.|S2||
+|Q-17|O que força Elias a sair do quarto na noite 3.|6|**Resolvido (D-24):** Elias não consegue dormir; a porta do subsolo se abre e chama.|S2||
 |Q-18|Como o dia termina e o que há para fazer além de conversar.|6|Fim do dia por ação do jogador; objetivos de dia ligados às pistas.|S1||
 |Q-19|Falas “Quem?” para cada NPC que pode morrer.|1, 9|Uma fala por NPC e por fato.|S2||
 |Q-20|Tela de transbordo: mensagem e feedback antes de repetir a noite; tela de game over do final C.|3, 11|Escurecer, som, texto curto, voltar ao início da noite.|S1||
