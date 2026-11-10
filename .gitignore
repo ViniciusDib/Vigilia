@@ -6,3 +6,14 @@ desktop.ini
 .claude/settings.local.json
 # Enunciado da disciplina (fica só local)
 Projeto_2D-*.md
+# Material de trabalho local (fora do repositório da entrega)
+CLAUDE.md
+Refs/
+Vigilia_GDD_tecnico_v0.1.pdf
+Vigilia/ArteBruta/
+Vigilia/Jogar.bat
+docs/notas-de-consistencia.md
+docs/prompts-arte.md
+docs/arte-e-referencias.md
+docs/vigilia.yaml
+docs/implementacao.md
