@@ -5,6 +5,9 @@ Projeto 2D da disciplina Jogos Digitais, Insper 2026.2.
 Feito por **Vinicius Dib, Greta Faria, Enzo Christofoletti e Thomas Rudge**.
 Disponível em português e inglês (botão "Idioma / Language" no menu).
 
+- **Jogar (itch.io):** https://viniciusdib.itch.io/vigilia
+- **GDD (Milanote):** https://app.milanote.com/1XqWtB1KiFL0cI?p=XygOfHICB8u
+
 > Quem não dorme é possuído. Elias Vaughn, jornalista, passa três dias e três noites num sanatório no Alasca.
 > À noite, os possuídos andam até ele e só param sob a luz da lanterna. Ele precisa dormir antes de transbordar.
 
@@ -52,7 +55,11 @@ Assets/_Vigilia/
   Tests/                       testes EditMode (regras) e PlayMode (fim de semana inteiro)
 ```
 
-O GDD (v0.2, o jogo entregue) está em `../docs/`; o que mudou durante o desenvolvimento está na tabela "O que mudou" de `../docs/gdd/00-capa-e-status.md`.
+## GDD
+
+- **GDD final (DDE):** no [Milanote](https://app.milanote.com/1XqWtB1KiFL0cI?p=XygOfHICB8u) e em `../docs/GDD_final.md`.
+- **GDD v0.2 completo:** `../docs/GDD_completo.md`.
+- **Mudanças durante o desenvolvimento:** seção 4 do GDD final.
 
 ## Testes
 
@@ -66,10 +73,10 @@ A disciplina exige crédito para todo asset e todo trecho de código de terceiro
 | O quê | Origem | Licença / observação |
 |---|---|---|
 | Cena do monstro (`Scripts/Encontro/EncontroMonstro.cs`) | Port para C# do design handoff "Asylum Monster Room": protótipo HTML com o renderizador procedural, paleta e parâmetros, feito por Vinicius Dib (grupo) no Claude Design | do grupo |
-| Gerador mulberry32 e hash de ruído (dentro do mesmo arquivo) | Algoritmos de domínio público, vindos do mesmo protótipo acima | do grupo |
+| Gerador mulberry32 e hash de ruído (dentro do mesmo arquivo) | Algoritmos de domínio público, vindos do mesmo protótipo acima | domínio público |
 | Modelos de corpo inteiro dos personagens e o cobertor | Gerados com PixelLab (pixellab.ai); os modelos servem de referência | Pelos [termos do PixelLab](https://www.pixellab.ai/termsofservice), quem gera é dono das imagens e pode usá-las em qualquer projeto, inclusive comercial, sem exigência de crédito (só é proibido treinar outros modelos com elas). Creditamos mesmo assim. |
 | Sprites vistos de cima, pisos das salas e parede (`topo_*`, `piso_*`, `parede`) | Gerados por código (`Ferramentas/gerar_arte_topo.py`) a partir das cores e roupas dos modelos acima | do grupo |
-| Retratos, menu, logo, quadros da intro, piso e parede (`Resources/Arte`) | Gerados com IA de imagem a partir de prompts escritos pelo grupo e processados pelo `PixelizadorDeArte` | **TODO: nome da ferramenta e termos de uso** |
+| Retratos, menu, logo, quadros da intro, piso e parede (`Resources/Arte`) | Gerados com ferramenta de IA de geração de imagem a partir de prompts escritos pelo grupo e reprocessados pelo `PixelizadorDeArte` (recorte, redução para pixel art e paleta do jogo) | imagens geradas pelo grupo, para uso neste projeto acadêmico |
 | Móveis, objetos de cenário e itens (`cama`, `caldeira`, `maca`, `item_*`...) | Gerados por código (`Ferramentas/gerar_props.py`) | do grupo |
 | Música (`Resources/Audio/musica_*.wav`) | Gerada por código (`Ferramentas/gerar_musica.py`), sem samples de terceiros | do grupo |
 | Arte provisória (`Resources/Gerado`) | Gerada por código (`Editor/GeradorDeArte.cs`) | do grupo |

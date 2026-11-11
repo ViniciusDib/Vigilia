@@ -7,6 +7,10 @@ Vinicius Dib, Greta Faria, Enzo Christofoletti, Thomas Rudge · Jogos Digitais, 
 
 **Pilares:** a luz é a mecânica · o sono é a única saída · a memória é o tema.
 
+| Dia | Noite 1 | Noite 3 (fuga) |
+|---|---|---|
+| ![Dia](../docs/itch/01_dia.png) | ![Noite](../docs/itch/04_noite.png) | ![Fuga](../docs/itch/07_fuga.png) |
+
 ---
 
 ## 1. Design
@@ -16,6 +20,25 @@ Vinicius Dib, Greta Faria, Enzo Christofoletti, Thomas Rudge · Jogos Digitais, 
 - **Personagens:** Elias (jogador); a enfermeira Marta, o zelador Otis, o médico Dr. Almeida e o paciente Sr. Wren (inofensivos de dia, possuídos à noite); o diretor Dr. Holt (o vilão, que nunca aparece); e o monstro (uma única cena).
 - **Narrativa:** intro → dia 1 → noite 1 → dia 2 → noite 2 → dia 3 → noite 3 (fuga) → matéria. A revelação está na sala secreta: o diretor mantém os internos acordados de propósito, e a última ficha é a de Elias, que talvez nunca tenha sido jornalista.
 - **Pistas:** três, plantadas ao longo do jogo: Marta sabe o nome dele, um bilhete com a letra dele e uma pulseira de paciente.
+- **Arte e som:** pixel art vista de cima, quase toda no escuro; cada cômodo com piso e móveis próprios; retratos com olheiras profundas. Música de dia, de noite e de fuga, além de passos, sussurros e batimento.
+
+**Mapa**
+
+```
+┌────────┬─────────────┬────────────┬──────────────┬──────────┐
+│ Quarto │ Consultório │ Escritório │ Ala de       │ Depósito │
+│ Elias  │             │ do diretor │ pacientes    │          │
+├────────┴─────────────┴────────────┴──────────────┴──────────┤
+│ Corredor                                                    ├──► Saída (noite 3)
+├─────────┬──────────────┬───────────────────┬────────────────┤
+│ Oficina │ Caldeira     │ Arquivo do        │ Refeitório     │
+│         │ (sempre      │ subsolo           │                │
+│         │  quente)     │                   │                │
+└─────────┴──────────────┴─────┬────────┬────┴────────────────┘
+                               │ Sala   │
+                               │secreta │
+                               └────────┘
+```
 
 ### Mecânicas
 - **Possessão (0 a 100):** é o único medidor de risco, e não há barra de vida.
@@ -75,6 +98,8 @@ A matéria muda conforme as evidências anotadas, as vezes em que Elias foi toca
 ---
 
 ## 4. Mudanças durante o desenvolvimento
+
+O GDD guiou o projeto desde o início: a v0.1 (22/10) tinha o design antes de existir código, e a [v0.2 completa](../docs/GDD_completo.md) registrou as mudanças abaixo enquanto o jogo era feito. Esta versão final resume o jogo entregue.
 
 | Data | Mudança | Por quê |
 |---|---|---|
